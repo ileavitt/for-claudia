@@ -1,4 +1,4 @@
-# gates-exhibit
+# project
 
 ## Project setup
 ```

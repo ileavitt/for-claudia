@@ -1,14 +1,21 @@
 <template>
-  <div class="home">
-    <Search @search-update="handleSearchUpdate"></Search>
-    <template v-if="albums.length">
-        <div v-for="album in albums" :key="album.id">
-            <router-link :to="{ name: 'album', params: { album } }">
-                {{ album.title }}
-            </router-link>
-        </div>
-    </template>
-  </div>
+    <div class="home">
+        <b-container class="mb-3">
+            <b-row>
+                <b-col>
+                    <Search @search-update="handleSearchUpdate"></Search>
+                </b-col>
+            </b-row>
+        </b-container>
+        
+        <template v-if="albums.length">
+            <div v-for="album in albums" :key="album.id">
+                <router-link :to="{ name: 'album', params: { album } }">
+                    {{ album.title }}
+                </router-link>
+            </div>
+        </template>
+    </div>
 </template>
 
 <script>

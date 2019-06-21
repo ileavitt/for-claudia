@@ -67,7 +67,7 @@ export default {
     width: 100%;
 }
 
-.control.has-icons-left .input {
+.control.has-icons-left .input { 
     padding-left: 2.25em;
 }
 
