@@ -4,17 +4,22 @@
             <b-row>
                 <b-col>
                     <router-link to="/">
-                        <b-button variant="success" :text="'Home'">Home</b-button>
+                        <!-- <b-button variant="success" :text="'Home'">Home</b-button> -->
                     </router-link>
                 </b-col>
                 <b-col>
                     <router-link to="/about">
-                        <b-button variant="success" :text="'About'">About</b-button>
+                        <!-- <b-button variant="success" :text="'About'">About</b-button> -->
                     </router-link>
                 </b-col>
                 <b-col>
                     <router-link to="/region">
-                        <b-button variant="success" :text="'Region'">Region</b-button>
+                        <!-- <b-button variant="success" :text="'Region'">Region</b-button> -->
+                    </router-link>
+                </b-col>
+                <b-col>
+                    <router-link to="/grants">
+                        <!-- <b-button variant="success" :text="'Region'">Region</b-button> -->
                     </router-link>
                 </b-col>
             </b-row>
@@ -45,4 +50,13 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+.container {
+    max-width:1920px!important;
+}
+
+.shadow-bg {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)!important;
+}
+
 </style>

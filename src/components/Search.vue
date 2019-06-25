@@ -18,7 +18,7 @@
 import Keyboard from 'vue-keyboard'
 
 export default {
-    name: 'Search',
+    name: 'search',
     components: {
         Keyboard
     },

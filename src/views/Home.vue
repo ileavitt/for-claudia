@@ -1,9 +1,30 @@
 <template>
     <div class="home">
-        <b-container class="mb-3">
+        <!-- <grant-total></grant-total> -->
+        <b-container>
+            <b-row align-h="center">
+                <b-col cols="12">
+                    <div id="world-map">
+                        <!-- <router-link to="/region"><bubble :text="'VIEW'"></bubble></router-link> -->
+                        <router-link to="/region"><bubble></bubble></router-link>
+                    </div>
+                </b-col>
+            </b-row>
+            <b-row>
+                <b-col cols="12">
+                    <bottom-nav></bottom-nav>
+                </b-col>
+            </b-row>
+        </b-container>
+        <!-- <b-container class="mb-3">
             <b-row>
                 <b-col>
-                    <Search @search-update="handleSearchUpdate"></Search>
+                    <search @search-update="handleSearchUpdate"></search>
+                </b-col>
+            </b-row>
+            <b-row>
+                <b-col>
+                    <router-link to="/region"><bubble :text="'VIEW'"></bubble></router-link>
                 </b-col>
             </b-row>
         </b-container>
@@ -14,20 +35,25 @@
                     {{ album.title }}
                 </router-link>
             </div>
-        </template>
+        </template> -->
     </div>
 </template>
 
 <script>
 // @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue';
-import Search from '@/components/Search.vue';
+// import search from '@/components/Search.vue';
+import bottomNav from '@/components/BottomNav.vue';
+import bubble from '@/components/Bubble.vue';
+import grantTotal from '@/components/GrantTotal.vue';
 import axios from 'axios';
 
 export default {
   name: 'home',
   components: {
-    Search
+    // search,
+    bottomNav,
+    bubble,
+    grantTotal
   },
   created() {
     axios.get('https://jsonplaceholder.typicode.com/albums')
@@ -43,7 +69,7 @@ export default {
       }
   },
   methods: {
-      handleSearchUpdate(val) {
+    handleSearchUpdate(val) {
           if (val == '') {
               return this.albums = this.originalAlbums
           }
@@ -56,3 +82,12 @@ export default {
   }
 }
 </script>
+
+
+<style scoped>
+#world-map {
+    background:url('~@/assets/map.gif') no-repeat center;
+    width:1920px;
+    height:1080px;
+}
+</style>
