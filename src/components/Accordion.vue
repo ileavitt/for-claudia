@@ -14,7 +14,7 @@
                             </b-card-body>
                         </b-collapse>
                     </b-card>
-                </b-col>
+                </b-col> 
                 <b-col cols="6">
                     <b-card no-body class="mb-1">
                         <b-card-header header-tag="header" class="p-1" role="tab">
