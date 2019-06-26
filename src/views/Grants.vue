@@ -9,6 +9,6 @@ export default {
     name: 'grants',
     components: {
         accordion
-    }
+        }
 }
 </script>
