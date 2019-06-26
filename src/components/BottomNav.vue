@@ -15,6 +15,9 @@
                     <router-link to="/grants" class="text-uppercase btn-style">view all grants</router-link>
                 </b-button-group>
             </b-col>
+            <b-col cols="1" offset="5">
+                <i class="material-icons md-48">search</i>
+            </b-col>
         </b-row>
     </b-container>
 </template>

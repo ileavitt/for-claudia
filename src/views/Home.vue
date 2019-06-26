@@ -8,13 +8,14 @@
                         <!-- <router-link to="/region"><bubble :text="'VIEW'"></bubble></router-link> -->
                         <router-link to="/region"><bubble></bubble></router-link>
                     </div>
-                </b-col>
-            </b-row>
-            <b-row>
-                <b-col cols="12">
-                    <bottom-nav></bottom-nav>
-                </b-col>
-            </b-row>
+                </b-col> 
+            </b-row> 
+            <!-- <b-row>
+                <b-col cols="12"> -->
+                    <bottom-nav></bottom-nav> 
+                    <search @search-update="handleSearchUpdate"></search>
+                <!-- </b-col>
+            </b-row> -->
         </b-container>
         <!-- <b-container class="mb-3">
             <b-row>
@@ -41,7 +42,7 @@
 
 <script>
 // @ is an alias to /src
-// import search from '@/components/Search.vue';
+import search from '@/components/Search.vue';
 import bottomNav from '@/components/BottomNav.vue';
 import bubble from '@/components/Bubble.vue';
 import grantTotal from '@/components/GrantTotal.vue';
@@ -50,7 +51,7 @@ import axios from 'axios';
 export default {
   name: 'home',
   components: {
-    // search,
+    search,
     bottomNav,
     bubble,
     grantTotal

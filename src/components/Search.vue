@@ -5,8 +5,8 @@
             <i class="mdi mdi-magnify mdi-24px"></i>
         </span>
         <Keyboard v-model="searchInput" v-show="isOpen" :layouts="[
-            '1234567890{delete:backspace}|qwertyuiop|asdfghjkl|{shift:goto:1}zxcvbnm|{space:space}{clear:clear}',
-            '!@#$%^&*(){delete:backspace}|QWERTYUIOP|ASDFGHJKL|{shift:goto:0}ZXCVBNM|{space:space}{clear:clear}'
+            '1234567890{delete:backspace}|qwertyuiop|asdfghjkl|{shift:goto:1}zxcvbnm|{space:space}{clear:clear}{enter:enter}',
+            '!@#$%^&*(){delete:backspace}|QWERTYUIOP|ASDFGHJKL|{shift:goto:0}ZXCVBNM|{space:space}{clear:clear}{enter:enter}'
             ]" :maxlength="20">
         </Keyboard>
     </div>
