@@ -14,7 +14,7 @@
                             </b-card-body>
                         </b-collapse>
                     </b-card>
-                </b-col>
+                </b-col> 
                 <b-col cols="6">
                     <b-card no-body class="mb-1">
                         <b-card-header header-tag="header" class="p-1" role="tab">
@@ -47,5 +47,41 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.btn,
+.card,
+.card-header,
+.btn-info,
+.btn-info:not(:disabled):not(.disabled):active {
+    background:none;
+    border:none;
+}
+
+.icon::before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+.card-header > a:before {
+    color:#ce6b29;
+    float: left !important;
+    font-family: "Font Awesome 5 Free";
+    font-size:48px;
+    font-weight: 900;
+    content: "\f056";
+    padding-right: 5px;
+}
+
+.card-header > a.collapsed:before {
+    color:#ce6b29;
+    float: left !important;
+    font-family: "Font Awesome 5 Free";
+    font-size:48px;
+    font-weight: 900;
+    content: "\f055";
+}
 </style>
+
