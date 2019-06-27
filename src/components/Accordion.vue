@@ -40,7 +40,7 @@
             },
             formatDate(value) {
                 var grantDate = moment(value).format('MMMM YYYY')
-                return grantDate
+                return grantDate;
             }
         },
         computed: mapState(['grants'])
