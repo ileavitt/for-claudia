@@ -1,45 +1,61 @@
 <template>
     <div>
-        <div class="pulsing-bubble md north-am">
+        <router-link :to="{path: '/grants/ + 0', params: {regionId: 0, regionName: regions[0].name} }" regionId class="pulsing-bubble md north-am">
             <span class="pulsing-text">VIEW</span>
-        </div>
-        <div class="pulsing-bubble sm south-am">
+        </router-link>
+        <div class="north-am-info"><div class="region-name">{{regions[0].name}}</div>{{ format(regions[0].totalGrants)}} <br /> ${{ format(regions[0].totalAmount) }}</div>
+
+        <router-link to="/grants" class="pulsing-bubble sm south-am">
             <span class="pulsing-text">VIEW</span>
-        </div>
-        <div class="pulsing-bubble sm europe">
+        </router-link>
+        <div class="south-am-info"><div class="region-name">{{regions[5].name}}</div> {{ format(regions[5].totalGrants)}} <br /> ${{ format(regions[5].totalAmount) }}</div>
+
+        <router-link to="/grants" class="pulsing-bubble sm europe">
             <span class="pulsing-text">VIEW</span>
-        </div>
-        <div class="pulsing-bubble md africa">
+        </router-link>
+        <div class="europe-info"><div class="region-name">{{regions[6].name}}</div>{{ format(regions[6].totalGrants)}} <br /> ${{ format(regions[6].totalAmount) }}</div>
+
+        <router-link to="/grants" class="pulsing-bubble md africa">
             <span class="pulsing-text">VIEW</span>
-        </div>
-        <div class="pulsing-bubble sm oceana">
+        </router-link>
+        <div class="africa-info"><div class="region-name">{{regions[2].name}}</div>{{ format(regions[2].totalGrants)}} <br /> ${{ format(regions[2].totalAmount) }}</div>
+
+        <router-link to="/grants" class="pulsing-bubble sm oceana">
             <span class="pulsing-text">VIEW</span>
-        </div>
-        <div class="pulsing-bubble lg asia">
+        </router-link>
+        <div class="oceana-info"><div class="region-name">{{regions[4].name}}</div>{{ format(regions[4].totalGrants)}} <br /> ${{ format(regions[4].totalAmount) }}</div>
+
+        <router-link to="/grants" class="pulsing-bubble lg asia">
             <span class="pulsing-text">VIEW</span>
-        </div>
-        <!--<div class="pulsing-bubble lg">
-            <span class="pulsing-text">{{ text }}</span>
-        </div> -->
+        </router-link>
+        <div class="asia-info"><div class="region-name">{{regions[1].name}}</div>{{ format(regions[1].totalGrants)}} <br /> ${{ format(regions[1].totalAmount) }}</div>
     </div>
 </template>
 
 <script>
+    import regions from '../db.json'
 export default {
-    name: 'bubble',
-    props: {
-        text: String
-    },
-    methods: {  
-    }
+        name: 'bubble',
+        data() {
+            return {
+                regionId: '2',
+                regions: regions.regions
+            }
+        },
+        methods: {
+            format(value) {
+                return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            }
+        },
+        props: {
+            text: String
+        }
 }
 </script>
 
 <style scoped>
 .pulsing-bubble {
     position: absolute;
-    /*left: 50%;
-    top: 50%;*/
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
     display: table;
@@ -88,29 +104,76 @@ export default {
     top: 47%;
 }
 
+    .north-am-info {
+        left: 6%;
+        top: 42%;
+        font-weight: 600;
+        position: absolute;
+    }
+
 .south-am {
     left: 27%;
     top: 69%;
 }
+    .south-am-info {
+        left: 27%;
+        top: 75%;
+        position: absolute;
+        font-weight: 600;
+    }
 
 .europe {
     left:46%;
     top:41%;
 }
 
+    .europe-info {
+        left: 42%;
+        top: 46%;
+        position: absolute;
+        font-weight: 600;
+    }
+
 .africa {
     left:50%;
     top:66%;
 }
+
+    .africa-info {
+        top: 75%;
+        left: 46%;
+        position: absolute;
+        font-weight: 600;
+    }
 
 .oceana {
     right:18%;
     top:78%;
 }
 
+.oceana-info {
+    right: 23%;
+    top: 80%;
+    position: absolute;
+    font-weight: 600;
+}
+
 .asia {
     right:10%;
     top:47%;
+}
+
+.asia-info {
+    right: 12%;
+    font-weight: 600;
+    top: 55%;
+    position: absolute;
+}
+
+.region-name {
+    font-size: 20px;
+    font-weight: 700;
+    font-stretch: expanded;
 }
 
 .sm {
@@ -127,15 +190,6 @@ export default {
     width: 135px;
     height: 135px;
 }
-
-/*@keyframes pulse-ring {
-  0% {
-    transform: scale(.33);
-  }
-  80%, 100% {
-    opacity: 0;
-  }
-}*/
 
 @keyframes pulse-dot {
   0% {

@@ -11,9 +11,9 @@ import bottomNav from '@/components/BottomNav.vue'
 
 export default {
     name: 'topic',
-    components: {
-        cards,
-        bottomNav
+        components: {
+            cards,
+            bottomNav
     }
 }
 </script>

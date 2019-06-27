@@ -50,6 +50,9 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+* {
+    max-height: 100vh;
+}
 
 .container {
     max-width:1920px!important;
