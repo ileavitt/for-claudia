@@ -38,27 +38,6 @@ export default {
             })
     },
     methods: {  
-        // getTotalGrantValue() {
-
-            
-            // var total = [
-            //     {"id":1,"name":"NORTH AMERICA","totalGrants":2913,"totalAmount":10},
-            //     {"id":2,"name":"ASIA","totalGrants":2862,"totalAmount":10},
-            //     {"id":3,"name":"AFRICA","totalGrants":2951,"totalAmount":10},
-            //     {"id":4,"name":"GLOBAL","totalGrants":2936,"totalAmount":20},
-            //     {"id":5,"name":"OCEANIA","totalGrants":2830,"totalAmount":3},
-            //     {"id":6,"name":"SOUTH AMERICA","totalGrants":2753,"totalAmount":11},
-            //     {"id":7,"name":"EUROPE","totalGrants":2751,"totalAmount":100}
-            // ]
-
-            // var sum = 0;
-
-            // for (var key in total) {
-            //     sum += total[key].totalAmount
-            // }
-
-            // return sum;
-        // }
     }
 }
 </script>
