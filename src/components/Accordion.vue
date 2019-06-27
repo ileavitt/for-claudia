@@ -6,13 +6,13 @@
                 <b-col cols="6" v-for="data in grants">
                     <b-card no-body class="mb-1">
                         <b-card-header header-tag="header" class="p-1" role="tab">
-                            <b-button block href="#" v-b-toggle.accordion-1 variant="info"></b-button>
-                            {{data.organization.name}} ${{data.amount}}
+                            <b-button block href="#" variant="info" v-b-toggle="'accordion' + data.id"></b-button>
+                            {{data.organization.name}} ${{data.amount}} 
+                            <div :id="data.id">{{ data.id }} </div>
                         </b-card-header>
-                        <b-collapse id="accordion-1" accordion="my-accordion" role="tabpanel">
+                        <b-collapse accordion="my-accordion" role="tabpanel" :id="'accordion' + data.id">
                             <b-card-body>
-                                <b-card-text>Given in {{formatDate(data.startDate)}}:</b-card-text>
-                                <b-card-text>"{{ data.title }}"</b-card-text>
+                                <b-card-text>Given in {{formatDate(data.startDate)}} "{{ data.title }}"</b-card-text>
                             </b-card-body>
                         </b-collapse>
                     </b-card>
@@ -39,7 +39,8 @@
                 return value.replace("-", " ")
             },
             formatDate(value) {
-                return new Date(value)
+               var grantDate = moment(value).format('MMMM YYYY')
+            return grantDate
             }
         },
         computed: mapState(['grants'])
