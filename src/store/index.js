@@ -6,11 +6,11 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
       grantTotal: 1000,
-      grantCount: 1500,
-      filters: []
+      grantCount: 1000,
+
   },
   mutations: {
-
+     
     },
   actions: {
 
