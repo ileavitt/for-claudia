@@ -3,7 +3,7 @@
         <b-row>
             <b-col cols="2">
                 <b-button-group size="lg">
-                    <router-link v-on:click="resetGrants" to="/" class="text-uppercase btn-style"><</router-link>
+                    <button v-on:click="resetGrants" class="text-uppercase btn-style"><</button>
                 </b-button-group>
             </b-col>
             <b-col cols="1" offset="5">
@@ -24,6 +24,9 @@
         methods: {
             resetGrants() {
                 this.$store.dispatch('resetState')
+                    .then((res) => {
+                        this.$router.push('/')
+                    })
             }
         }
 }
