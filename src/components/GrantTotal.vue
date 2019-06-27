@@ -1,47 +1,26 @@
 <template>
-    <b-container class="">
-        <b-row align-h="left">
-            <b-col cols="1">
-                <!-- <div><p class="large-text">{{ getTotalGrantValue() }} <span class="text-uppercase"> {{ message }}</span></p></div> -->
-                <div><p class="large-text"><span class="text-uppercase"> {{ message }}</span></p></div>
-            </b-col>
-        </b-row>
+    <b-container class="grant-total">
         <b-row>
-            <b-col cols="1">
-                <div>
-                    {{ region }}
-                </div>
-            </b-col>
+          <div>{{ grantTotal }} Grants</div>   <div>${{grantCount}} provided since 1999</div>
         </b-row>
     </b-container>
     
 </template>
 
 <script>
-import axios from 'axios'
-
-export default {
-    name: 'grantTotal',
-    props: { 
-        text: String
-    },
-    data() {
-        return {
-            message: 'grants',
-            region: []
-        }
-    },
-    created() {
-        axios.get('https://my-json-server.typicode.com/ileavitt/for-claudia/total')
-            .then((response) => {
-                this.region = response.data
-            })
-    },
-    methods: {  
+    import {mapState} from 'vuex'
+    export default {
+        name: 'grantTotal',
+        computed: mapState([
+            'grantTotal', 'grantCount'
+        ])
     }
-}
 </script>
 
 <style>
-
+    .grant-total {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 </style>
