@@ -23,23 +23,27 @@
 </template>
 
 <script>
-import data from '../db.json'
-export default {
-    name: 'accordion',
-    data() {
-        return {
-            grants: data.grants
-        }
-    },
-    methods: {
-        transform(value) {
-            return value.replace("-", " ")
+    import {mapMutations, mapState} from 'vuex'
+    export default {
+        name: 'accordion',
+        mounted() {
+            let filters = {
+                region: '',
+                year: '',
+                topic: ''
+            }
+            this.$store.dispatch('loadFiltered', filters)
         },
-        formatDate(value) {
-            var grantDate = moment(value).format('MMMM YYYY')
+        methods: {
+            transform(value) {
+                return value.replace("-", " ")
+            },
+            formatDate(value) {
+               var grantDate = moment(value).format('MMMM YYYY')
             return grantDate
-        }
-    }
+            }
+        },
+        computed: mapState(['grants'])
 }
 </script>
 
