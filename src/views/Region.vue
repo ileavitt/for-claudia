@@ -26,7 +26,8 @@ export default {
 <style scoped>
     #world-map {
         background: url('~@/assets/map.gif') no-repeat center;
+        margin: auto;
         width: 1920px;
-        height: 1080px;
+        height: 700px;
     }
 </style>
