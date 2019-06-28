@@ -1,12 +1,15 @@
 <template>
     <div class="control has-icons-left is-clearfix search">
-        <input v-model="searchInput" @click="toggle" placeholder="Search..." class="input" />
-        <span class="icon is-left">
-            <i class="mdi mdi-magnify mdi-24px"></i>
-        </span>
-        <Keyboard v-model="searchInput" v-show="isOpen" :layouts="[
-            '1234567890{delete:backspace}|qwertyuiop|asdfghjkl|{shift:goto:1}zxcvbnm|{space:space}{clear:clear}{enter:enter}',
-            '!@#$%^&*(){delete:backspace}|QWERTYUIOP|ASDFGHJKL|{shift:goto:0}ZXCVBNM|{space:space}{clear:clear}{enter:enter}'
+        <div class="search-input">
+            <input v-model="searchInput" placeholder="Search By Organization" class="input" />
+            <span class="icon is-left">
+                <i class="fas fa-search"></i>
+            </span>
+            <b-button>Search</b-button>
+        </div>
+        <Keyboard v-model="searchInput" :layouts="[
+            '1234567890{delete:backspace}|qwertyuiop|asdfghjkl|{shift:goto:1}zxcvbnm|{space:space}{clear:clear}',
+            '!@#$%^&*(){delete:backspace}|QWERTYUIOP|ASDFGHJKL|{shift:goto:0}ZXCVBNM|{space:space}{clear:clear}'
             ]" :maxlength="20">
         </Keyboard>
     </div>
@@ -30,11 +33,6 @@ export default {
         toggle() {
             this.isOpen = !this.isOpen
         }
-    },
-    watch: {
-        searchInput(newVal, oldVal) {
-            this.$emit('search-update', newVal)
-        }
     }
 }
 
@@ -57,14 +55,13 @@ export default {
     color: #363636;
     display:inline-flex;
     font-size:1rem;
-    height:2.25em;
+    height:60px;
     line-height:1.5;
     margin:0;
-    max-width: 100%;
     padding: calc(.375em - 1px) calc(.625em - 1px);
     position: relative;
     vertical-align: top;
-    width: 100%;
+    width: 90%;
 }
 
 .control.has-icons-left .input { 
@@ -84,4 +81,5 @@ export default {
     width: 2.25em;
     z-index: 4;
 }
+
 </style>

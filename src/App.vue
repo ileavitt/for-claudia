@@ -63,5 +63,26 @@ export default {
 .material-icons.md-48 { 
     font-size: 48px;
 }
+.modal {
+    padding-top: 45vh;
+}
+.modal-content {
+    width: 70vw !important;
+}
+.modal-dialog {
+    max-width: 70vw !important;
+}
+.modal-header {
+    border-bottom: none !important;
+}
+.modal-header {
+    font-size: 40px;
+}
+
+.modal-dialog button {
+    width: 80px !important;
+    height: 60px !important;
+}
+
 
 </style>

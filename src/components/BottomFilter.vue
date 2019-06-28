@@ -27,9 +27,10 @@
                     </b-form-select>
             </b-col>
             <b-col cols="1" offset="1">
-                <b-button class="btn btn-danger btn-circle btn-xl" v-on:click="resetGrants">
-                    <i class="fas fa-search"></i>
-                </b-button>
+                <b-button @click="$bvModal.show('search-keyboard')"><i class="material-icons md-48">search</i></b-button>
+                <b-modal id="search-keyboard" hide-footer>
+                    <search></search>
+                </b-modal>
             </b-col>
         </b-row>
     </b-container>
