@@ -1,12 +1,6 @@
 <template>
-    <div class="region">
-        <b-row align-h="center">
-            <b-col cols="12">
-                <div id="world-map">
-                    <bubble></bubble>
-                </div>
-            </b-col>
-        </b-row>
+    <div id="world-map">
+        <bubble></bubble>
     </div>
 </template>
 
@@ -25,8 +19,8 @@ export default {
 
 <style scoped>
     #world-map {
-        background: url('~@/assets/map.gif') no-repeat center;
-        width: 1920px;
-        height: 1080px;
+        background: url('~@/assets/map.png') no-repeat center;
+        width: 100%;
+        height: 656px;
     }
 </style>
