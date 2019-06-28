@@ -2,11 +2,11 @@
     <b-container>
         <b-row>
             <b-card-group deck>
-                    <b-card v-for="data in topics" header="ICON" header-bg-variant="primary" align="center" class="shadow" v-on:click="routing(data)" v-bind:id="data.Id">
+                    <b-card v-for="topic in topics" header="ICON" header-bg-variant="primary" align="center" class="shadow" v-on:click="routing(topic)" v-bind:id="topic.id">
                         <b-card-text>
-                            <h3 class="topic-header">{{data.name}}</h3>
-                            <div class="topic-grants">{{ format(data.totalGrants)}}</div>
-                            <div class="topic-total">${{ format(data.totalAmount) }}</div>
+                            <h3 class="topic-header">{{topic.name}}</h3>
+                            <div class="topic-grants">{{ format(topic.totalGrants)}}</div>
+                            <div class="topic-total">${{ format(topic.totalAmount) }}</div>
                         </b-card-text>
                     </b-card>
             </b-card-group>
