@@ -1,42 +1,46 @@
 <template>
     <div role="tablist">
-        <div class="filter">{{$route.params.filter ? transform($route.params.filter) : null}} region:{{region.name}} topic:{{topic.name}} Year:{{year}}</div>
-        <b-container>
-            <b-row>
-                <div class="panel-left col-sm-6">
-                    <b-card no-body class="mb-1 animated fadeInUp slow" v-for="(data, index) in grants" v-if="index % 2"  v-bind:key="data.grants">
-                        <b-card-header header-tag="header" class="p-1" role="tab">
-                            <b-button block href="#" variant="info" v-b-toggle="'accordion' + data.id"></b-button>
-                            {{data.organization.name}} ${{data.amount}}
-                        </b-card-header>
-                        <b-collapse accordion="my-accordion" role="tabpanel" :id="'accordion' + data.id">
-                            <b-card-body>
-                                <b-card-text>Given in {{formatDate(data.startDate)}} "{{ data.title }}"</b-card-text>
-                            </b-card-body>
-                        </b-collapse>
-                    </b-card>
-                </div>
-
-                <div class="panel-left col-sm-6">
-                    <b-card no-body class="mb-1" v-for="(data, index) in grants" v-if="indexmath(index)">
-                        <b-card-header header-tag="header" class="p-1" role="tab">
-                            <b-button block href="#" variant="info" v-b-toggle="'accordion' + data.id"></b-button>
-                            {{data.organization.name}} ${{data.amount}}
-                        </b-card-header>
-                        <b-collapse accordion="my-accordion" role="tabpanel" :id="'accordion' + data.id">
-                            <b-card-body>
-                                <b-card-text>Given in {{formatDate(data.startDate)}} "{{ data.title }}"</b-card-text>
-                            </b-card-body>
-                        </b-collapse>
-                    </b-card>
-                </div>
-            </b-row>
+        <div class="filter">{{$route.params.filter ? transform($route.params.filter) : null}}</div>
+        <b-container class="grantList">
+                <b-row>
+                    <b-col cols="2">
+                        <div>region:{{region.name}}</div>
+                        <div>topic:{{topic.name}}</div>
+                        <div>Year:{{year}}</div>
+                    </b-col>
+                        <b-col class="panel-left col-5">
+                            <b-card no-body v-for="(data, index) in grants" v-if="index % 2" v-bind:key="data.grants">
+                                <b-card-header class="p-1 animated fadeInUpBig slow" header-tag="header" role="tab">
+                                    <b-button block href="#" variant="info" v-b-toggle="'accordion' + data.id"></b-button>
+                                    {{data.organization.name}} <br />${{data.amount}}
+                                </b-card-header>
+                                <b-collapse accordion="my-accordion" role="tabpanel" :id="'accordion' + data.id">
+                                    <b-card-body>
+                                        <b-card-text>Given in {{formatDate(data.startDate)}} "{{ data.title }}"</b-card-text>
+                                    </b-card-body>
+                                </b-collapse>
+                            </b-card>
+                        </b-col>
+                        <b-col class="panel-left col-5">
+                            <b-card no-body class="mb-1" v-for="(data, index) in grants" v-if="indexmath(index)" v-bind:key="data.grants">
+                                <b-card-header class="p-1 animated fadeInUpBig slow" header-tag="header" role="tab">
+                                    <b-button block href="#" variant="info" v-b-toggle="'accordion' + data.id"></b-button>
+                                    {{data.organization.name}} <br />${{data.amount}}
+                                </b-card-header>
+                                <b-collapse accordion="my-accordion" role="tabpanel" :id="'accordion' + data.id">
+                                    <b-card-body>
+                                        <b-card-text>Given in {{formatDate(data.startDate)}} "{{ data.title }}"</b-card-text>
+                                    </b-card-body>
+                                </b-collapse>
+                            </b-card>
+                        </b-col>
+                </b-row>
         </b-container>
     </div>
 </template>
 
 <script>
-    import {mapMutations, mapState} from 'vuex'
+    import {mapState} from 'vuex'
     export default {
         name: 'accordion',
         mounted() {
@@ -52,6 +56,7 @@
                 return value.replace("-", " ")
             },
             formatDate(value) {
+                var moment = require('moment');
                 var grantDate = moment(value).format('MMMM YYYY')
                 return grantDate;
             },
@@ -70,6 +75,15 @@
 
 @import "https://cdn.jsdelivr.net/npm/animate.css@3.7.2"; /*Animation library*/
 
+
+.grantList {
+    margin-top: 3em;
+    position:relative;
+    overflow-y:auto; 
+    height: 60vh;
+    width: 80vw;
+}
+
 .btn,
 .card,
 .card-header,
@@ -77,6 +91,11 @@
 .btn-info:not(:disabled):not(.disabled):active {
     background:none;
     border:none;
+}
+
+.card-body {
+    margin: auto;
+    width: 80%;
 }
 
 .icon::before {
@@ -106,10 +125,11 @@
     content: "\f055";
 }
 
-.filter {
-    font-weight: bold;
-    font-size: 38px;
-    text-transform: capitalize;
-}
+    .filter {
+        color: #392d1c;
+        font-weight: bold;
+        font-size: 36px;
+        text-transform: capitalize;
+    }
 </style>
 
