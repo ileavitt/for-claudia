@@ -3,8 +3,8 @@
         <div class="filter">{{$route.params.filter ? transform($route.params.filter) : null}}</div>
         <b-container>
             <b-row>
-                <b-col cols="6" v-for="data in grants">
-                    <b-card no-body class="mb-1">
+                <b-col cols="6" v-for="data in grants" v-bind:key="data.grants">
+                    <b-card no-body class="mb-1 animated fadeInUp slow">
                         <b-card-header header-tag="header" class="p-1" role="tab">
                             <b-button block href="#" variant="info" v-b-toggle="'accordion' + data.id"></b-button>
                             {{data.organization.name}} ${{data.amount}} 
@@ -48,6 +48,9 @@
 </script>
 
 <style scoped>
+
+@import "https://cdn.jsdelivr.net/npm/animate.css@3.7.2"; /*Animation library*/
+
 .btn,
 .card,
 .card-header,
