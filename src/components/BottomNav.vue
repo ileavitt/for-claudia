@@ -9,11 +9,14 @@
             </b-col>
             <b-col cols="2" offset="2">
                 <b-button-group class="mb-10 shadow-bg" size="lg">
-                    <router-link to="/grants" class="text-uppercase btn-style">view all grants</router-link>
+                    <router-link to="/grants/all-grants" class="text-uppercase btn-style">view all grants</router-link>
                 </b-button-group>
             </b-col>
-            <b-col cols="1" offset="5">
-                <i class="material-icons md-48">search</i>
+            <b-col cols="1" offset="4">
+                <b-button @click="$bvModal.show('search-keyboard')"><i class="material-icons md-48">search</i></b-button>
+                <b-modal id="search-keyboard" hide-footer>
+                        <search></search>
+                </b-modal>
             </b-col>
         </b-row>
     </b-container>
