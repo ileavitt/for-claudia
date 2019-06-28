@@ -10,7 +10,7 @@
                     </b-col>
                         <b-col class="panel-left col-5">
                             <b-card no-body v-for="(data, index) in grants" v-if="index % 2" v-bind:key="data.grants">
-                                <b-card-header class="p-1 animated fadeInUpBig slow" header-tag="header" role="tab">
+                                <b-card-header class="p-1 animated fadeInUpBig" header-tag="header" role="tab">
                                     <b-button block href="#" variant="info" v-b-toggle="'accordion' + data.id"></b-button>
                                     {{data.organization.name}} <br />${{data.amount}}
                                 </b-card-header>
@@ -23,7 +23,7 @@
                         </b-col>
                         <b-col class="panel-left col-5">
                             <b-card no-body class="mb-1" v-for="(data, index) in grants" v-if="indexmath(index)" v-bind:key="data.grants">
-                                <b-card-header class="p-1 animated fadeInUpBig slow" header-tag="header" role="tab">
+                                <b-card-header class="p-1 animated fadeInUpBig" header-tag="header" role="tab">
                                     <b-button block href="#" variant="info" v-b-toggle="'accordion' + data.id"></b-button>
                                     {{data.organization.name}} <br />${{data.amount}}
                                 </b-card-header>
@@ -124,6 +124,7 @@
     font-weight: 900;
     content: "\f055";
 }
+
 
     .filter {
         color: #392d1c;

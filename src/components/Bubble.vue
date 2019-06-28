@@ -5,7 +5,7 @@
         </div>
         <div class="north-am-info" v-if="regions[0]"><div class="region-name">{{regions[0].name}}</div>{{ format(regions[0].totalGrants)}} <br /> ${{ format(regions[0].totalAmount) }}</div>
 
-        <div v-on:click="addFilter(regions[5])"" class="pulsing-bubble sm south-am">
+        <div v-on:click="addFilter(regions[5])" class="pulsing-bubble sm south-am">
             <span class="pulsing-text">VIEW</span>
         </div>
         <div class="south-am-info" v-if="regions[5]"><div class="region-name">{{regions[5].name}}</div> {{ format(regions[5].totalGrants)}} <br /> ${{ format(regions[5].totalAmount) }}</div>
