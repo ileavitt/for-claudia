@@ -4,7 +4,7 @@
         <b-container>
             <b-row>
                 <div class="panel-left col-sm-6">
-                    <b-card no-body class="mb-1" v-for="(data, index) in grants" v-if="index % 2">
+                    <b-card no-body class="mb-1 animated fadeInUp slow" v-for="(data, index) in grants" v-if="index % 2"  v-bind:key="data.grants">
                         <b-card-header header-tag="header" class="p-1" role="tab">
                             <b-button block href="#" variant="info" v-b-toggle="'accordion' + data.id"></b-button>
                             {{data.organization.name}} ${{data.amount}}
@@ -67,6 +67,9 @@
 </script>
 
 <style scoped>
+
+@import "https://cdn.jsdelivr.net/npm/animate.css@3.7.2"; /*Animation library*/
+
 .btn,
 .card,
 .card-header,
