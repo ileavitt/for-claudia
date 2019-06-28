@@ -2,7 +2,7 @@
     <b-container>
         <b-row>
             <b-card-group deck>
-                    <b-card v-for="data in topics" header="ICON" header-bg-variant="primary" align="center" class="shadow" v-bind:id="data.Id">
+                    <b-card v-for="data in topics" header="ICON" header-bg-variant="primary" align="center" class="shadow" v-on:click="routing(data)" v-bind:id="data.Id">
                         <b-card-text>
                             <h3 class="topic-header">{{data.name}}</h3>
                             <div class="topic-grants">{{ format(data.totalGrants)}}</div>
@@ -15,20 +15,23 @@
 </template>
 
 <script>
-    import topicGroups from '../db.json'
-    
+    import { mapState } from 'vuex'
     export default {
         name: 'cards',
-        data() {
-            return {
-                topics: topicGroups.topicGroups
-            }
+        mounted() {
+            this.$store.commit('SET_TOPICS')
         },
         methods: {
             format(value) {
                 return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            },
+            routing: function (data) {
+                let topicFilter = {name: data.name, id: data.id}
+                this.$store.commit('FILTER_TOPIC', topicFilter)
+                this.$router.push('/grants/' + data.name.replace(" ", "-").toLowerCase())
             }
-        }
+        },
+        computed: mapState(['topics', 'topic'])
 }
 </script>
 

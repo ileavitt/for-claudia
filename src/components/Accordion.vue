@@ -1,14 +1,13 @@
 <template>
     <div role="tablist">
-        <div class="filter">{{$route.params.filter ? transform($route.params.filter) : null}}</div>
+        <div class="filter">{{$route.params.filter ? transform($route.params.filter) : null}} region:{{region.name}} topic:{{topic.name}} Year:{{year}}</div>
         <b-container>
             <b-row>
-                <b-col cols="6" v-for="data in grants" v-bind:key="data.grants">
-                    <b-card no-body class="mb-1 animated fadeInUp slow">
+                <div class="panel-left col-sm-6">
+                    <b-card no-body class="mb-1 animated fadeInUp slow" v-for="(data, index) in grants" v-if="index % 2"  v-bind:key="data.grants">
                         <b-card-header header-tag="header" class="p-1" role="tab">
                             <b-button block href="#" variant="info" v-b-toggle="'accordion' + data.id"></b-button>
-                            {{data.organization.name}} ${{data.amount}} 
-                            <div :id="data.id">{{ data.id }} </div>
+                            {{data.organization.name}} ${{data.amount}}
                         </b-card-header>
                         <b-collapse accordion="my-accordion" role="tabpanel" :id="'accordion' + data.id">
                             <b-card-body>
@@ -16,7 +15,21 @@
                             </b-card-body>
                         </b-collapse>
                     </b-card>
-                </b-col>
+                </div>
+
+                <div class="panel-left col-sm-6">
+                    <b-card no-body class="mb-1" v-for="(data, index) in grants" v-if="indexmath(index)">
+                        <b-card-header header-tag="header" class="p-1" role="tab">
+                            <b-button block href="#" variant="info" v-b-toggle="'accordion' + data.id"></b-button>
+                            {{data.organization.name}} ${{data.amount}}
+                        </b-card-header>
+                        <b-collapse accordion="my-accordion" role="tabpanel" :id="'accordion' + data.id">
+                            <b-card-body>
+                                <b-card-text>Given in {{formatDate(data.startDate)}} "{{ data.title }}"</b-card-text>
+                            </b-card-body>
+                        </b-collapse>
+                    </b-card>
+                </div>
             </b-row>
         </b-container>
     </div>
@@ -27,10 +40,10 @@
     export default {
         name: 'accordion',
         mounted() {
-            let filters = {
-                region: '',
-                year: '',
-                topic: ''
+            var filters = {
+                region: this.$store.state.region,
+                year: this.$store.state.year,
+                topic: this.$store.state.topic
             }
             this.$store.dispatch('loadFiltered', filters)
         },
@@ -39,11 +52,17 @@
                 return value.replace("-", " ")
             },
             formatDate(value) {
-               var grantDate = moment(value).format('MMMM YYYY')
-            return grantDate
+                var grantDate = moment(value).format('MMMM YYYY')
+                return grantDate;
+            },
+            indexmath(val) {
+                if (val % 2) return false
+                else return true
             }
         },
-        computed: mapState(['grants'])
+        computed: {
+            ...mapState(['grants', 'region', 'topic', 'year'])
+        }
 }
 </script>
 

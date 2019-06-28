@@ -35,8 +35,6 @@ export default {
   name: 'App',
   components: {
     btn
-  },
-  methods: {
   }
 }
 </script>
@@ -50,8 +48,8 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-* {
-    max-height: 100vh;
+*, body {
+    max-height: 1600px !important;
 }
 
 .container {
