@@ -45,7 +45,6 @@
     export default {
         name: 'accordion',
         mounted() {
-            var year = this.$store.state.year
             var filters = {
                 region: this.$store.state.region,
                 year: this.$store.state.year,

@@ -17,8 +17,6 @@
 </template>
 
 <script>
-    import topicGroups from '../db.json'
-    import globe from '@/components/Globe.vue'
     import { mapState } from 'vuex'
     
     export default {
