@@ -28,7 +28,7 @@
             routing: function (data) {
                 let topicFilter = {name: data.name, id: data.id}
                 this.$store.commit('FILTER_TOPIC', topicFilter)
-                this.$router.push('/grants/' + data.name.replace(" ", "-").toLowerCase())
+                this.$router.push('/grants/topic/' + data.name.replace(" ", "-").toLowerCase())
             }
         },
         computed: mapState(['topics', 'topic'])

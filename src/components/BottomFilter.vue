@@ -6,31 +6,32 @@
                         <i class="fas fa-angle-left"></i>
                     </b-button>
             </b-col>
-            <b-col cols="1">
-                Filters:
+            <b-col>
+                <b-form-group v-if="$route.name !== 'search-grants'">
+                    <b-form-select v-model="yearSelected" v-on:change="applyYearFilter" :options="years"></b-form-select>
+                </b-form-group>
             </b-col>
-            <b-col cols="2">
-                <b-form-select v-model="yearSelected" v-on:change="applyYearFilter" :options="years"></b-form-select>
+            <b-col>
+                <b-form-group label="Topic:" v-if="$route.name == 'region-grants'">
+                    <b-form-select v-model="topicSelected" v-on:change="applyTopicFilter">
+                        <option v-for="topic in topics" :value="topic">
+                            {{topic.name}}
+                        </option>
+                    </b-form-select>
+                </b-form-group>
             </b-col>
-            <b-col cols="2">
-                <b-form-select v-model="topicSelected" v-on:change="applyTopicFilter">
-                    <option v-for="topic in topics" :value="topic">
-                       {{topic.name}}
-                    </option>
-                </b-form-select>
-            </b-col>
-            <b-col cols="2">
-                <b-form-select v-model="regionSelected" v-on:change="applyRegionFilter">
+            <b-col>
+                <b-form-group label="Region:" v-if="$route.name == 'topic-grants'">
+                    <b-form-select v-model="regionSelected" v-on:change="applyRegionFilter">
                         <option v-for="region in regions" :value="region">
                             {{region.name}}
                         </option>
                     </b-form-select>
+                </b-form-group>
+            
             </b-col>
             <b-col cols="1" offset="1">
-                <b-button @click="$bvModal.show('search-keyboard')"><i class="material-icons md-48">search</i></b-button>
-                <b-modal id="search-keyboard" hide-footer>
                     <search></search>
-                </b-modal>
             </b-col>
         </b-row>
     </b-container>

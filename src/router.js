@@ -21,11 +21,24 @@ export default new Router({
         component: () => import(/* webpackChunkName: "about" */ './views/Region.vue')
       },
     {
-        path: '/grants/:filter?',
-        name: 'grants',
+        path: '/grants/topic/:filter?',
+        name: 'topic-grants',
         props: true,
         component: () => import(/* webpackChunkName: "about" */ './views/Grants.vue')
-    },
+      },
+
+      {
+          path: '/grants/region/:filter?',
+          name: 'region-grants',
+          props: true,
+          component: () => import(/* webpackChunkName: "about" */ './views/Grants.vue')
+      },
+      {
+          path: '/grants/search/:filter?',
+          name: 'search-grants',
+          props: true,
+          component: () => import(/* webpackChunkName: "about" */ './views/Grants.vue')
+      },
     {
         path: '/topics',
         name: 'topics',

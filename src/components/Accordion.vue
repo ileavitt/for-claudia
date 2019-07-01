@@ -1,12 +1,13 @@
 <template>
     <div role="tablist">
-        <div class="filter">{{$route.params.filter ? transform($route.params.filter) : null}}</div>
+        <div class="filter">{{$route.name == 'search-grants' ? 'Search Results:' : null}} {{$route.params.filter ? transform($route.params.filter) : null}}</div>
         <b-container class="grantList">
                 <b-row>
                     <b-col cols="2">
                         <div>region:{{region.name}}</div>
                         <div>topic:{{topic.name}}</div>
                         <div>Year:{{year}}</div>
+                        <div>search: {{search}}</div>
                     </b-col>
                         <b-col class="panel-left col-5">
                             <b-card no-body v-for="(data, index) in grants" v-if="index % 2" v-bind:key="data.grants">
@@ -44,6 +45,7 @@
     export default {
         name: 'accordion',
         mounted() {
+            var year = this.$store.state.year
             var filters = {
                 region: this.$store.state.region,
                 year: this.$store.state.year,
@@ -66,7 +68,7 @@
             }
         },
         computed: {
-            ...mapState(['grants', 'region', 'topic', 'year'])
+            ...mapState(['grants', 'region', 'topic', 'year', 'search'])
         }
 }
 </script>
