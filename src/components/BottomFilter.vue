@@ -7,14 +7,14 @@
                     </b-button>
             </b-col>
             <b-col>
-                <b-form-group v-if="$route.name !== 'search-grants'">
+                <b-form-group label="Year:" v-if="$route.name !== 'search-grants'">
                     <b-form-select v-model="yearSelected" v-on:change="applyYearFilter" :options="years"></b-form-select>
                 </b-form-group>
             </b-col>
             <b-col>
                 <b-form-group label="Topic:" v-if="$route.name == 'region-grants'">
                     <b-form-select v-model="topicSelected" v-on:change="applyTopicFilter">
-                        <option v-for="topic in topics" :value="topic" v-bind:key="topic">
+                        <option v-for="topic in topics" :value="topic" v-bind:key="topic.id">
                             {{topic.name}}
                         </option>
                     </b-form-select>
@@ -23,7 +23,7 @@
             <b-col>
                 <b-form-group label="Region:" v-if="$route.name == 'topic-grants'">
                     <b-form-select v-model="regionSelected" v-on:change="applyRegionFilter">
-                        <option v-for="region in regions" :value="region" v-bind:key="region">
+                        <option v-for="region in regions" :value="region" v-bind:key="region.id">
                             {{region.name}}
                         </option>
                     </b-form-select>
