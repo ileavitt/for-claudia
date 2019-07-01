@@ -21,10 +21,6 @@
     
     export default {
         name: 'cards',
-        mounted() {
-            this.$store.commit('SET_TOPICS'),
-            this.placeImg()
-        },
         methods: {
             format(value) {
                 return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
@@ -41,6 +37,12 @@
                 this.$store.commit('FILTER_TOPIC', topicFilter)
                 this.$router.push('/grants/topic/' + data.name.replace(" ", "-").toLowerCase())
             }
+        },
+        mounted() {
+            this.$store.commit('SET_TOPICS'),
+            this.$nextTick(function () {
+                this.placeImg()
+            })
         },
         computed: mapState(['topics', 'topic'])
 }
