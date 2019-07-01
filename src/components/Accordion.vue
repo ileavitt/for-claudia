@@ -1,6 +1,11 @@
 <template>
     <div role="tablist">
         <div class="filter">{{$route.name == 'search-grants' ? 'Search Results:' : null}} {{$route.params.filter ? transform($route.params.filter) : null}}</div>
+        <transition name="fade">
+            <div class="loading" v-show="loading">
+                <span class="fa fa-spinner fa-spin"></span> Loading
+            </div>
+        </transition>
         <b-container class="grantList">
                 <b-row>
                     <b-col cols="2">
@@ -44,8 +49,17 @@
     import {mapState} from 'vuex'
     export default {
         name: 'accordion',
+        data() {
+            return {
+                nextItem: 1,
+                loading: false,
+                grantScroll: []
+            }
+        },
         mounted() {
-            var year = this.$store.state.year
+            const listElm = document.querySelector('#infinite-list');
+            listElm.addEventListener('scrolll')
+
             var filters = {
                 region: this.$store.state.region,
                 year: this.$store.state.year,

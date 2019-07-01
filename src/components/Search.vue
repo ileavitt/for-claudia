@@ -24,7 +24,6 @@
 <script>
 
 import Keyboard from 'vue-keyboard'
-import { mapActions, mapState } from 'vuex';
 export default {
     name: 'search',
     components: {
