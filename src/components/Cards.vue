@@ -23,16 +23,13 @@
     
     export default {
         name: 'cards',
-        mounted() {
-            this.$store.commit('SET_TOPICS'),
-            this.placeImg()
-        },
         methods: {
             format(value) {
                 return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             },
             placeImg() {
               var imgContainer = document.getElementsByClassName('img-container')
+              console.log(imgContainer.length)
               imgContainer[0].innerHTML = '<img src="/img/sun.9240fa97.gif" class="card-img" />'
               imgContainer[1].innerHTML = '<img src="/img/arrow.04a4b532.gif" class="card-img" />'
               imgContainer[2].innerHTML = '<img src="/img/hat.f0b0fb2c.gif" class="card-img" />'
@@ -43,6 +40,12 @@
                 this.$store.commit('FILTER_TOPIC', topicFilter)
                 this.$router.push('/grants/topic/' + data.name.replace(" ", "-").toLowerCase())
             }
+        },
+        mounted() {
+            this.$store.commit('SET_TOPICS'),
+            this.$nextTick(function () {
+                this.placeImg()
+            })
         },
         computed: mapState(['topics', 'topic'])
 }
