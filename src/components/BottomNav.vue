@@ -13,10 +13,7 @@
                 </b-button-group>
             </b-col>
             <b-col cols="1" offset="4">
-                <b-button @click="$bvModal.show('search-keyboard')"><i class="material-icons md-48">search</i></b-button>
-                <b-modal id="search-keyboard" hide-footer>
-                        <search></search>
-                </b-modal>
+                <search></search>
             </b-col>
         </b-row>
     </b-container>

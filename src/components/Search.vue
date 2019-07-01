@@ -1,37 +1,44 @@
 <template>
-    <div class="control has-icons-left is-clearfix search">
-        <div class="search-input">
-            <input v-model="searchInput" placeholder="Search By Organization" class="input" />
-            <span class="icon is-left">
-                <i class="fas fa-search"></i>
-            </span>
-            <b-button>Search</b-button>
-        </div>
-        <Keyboard v-model="searchInput" :layouts="[
+    <div>
+        <b-button @click="$bvModal.show('search-keyboard')"><i class="material-icons md-48">search</i></b-button>
+        <b-modal id="search-keyboard" hide-footer>
+            <div class="control has-icons-left is-clearfix search">
+                <div class="search-input">
+                    <input v-model="searchInput" placeholder="Search By Organization" class="input" />
+                    <span class="icon is-left">
+                        <i class="fas fa-search"></i>
+                    </span>
+                    <b-button v-on:click="searchGrants" @click="$bvModal.hide('search-keyboard')">Search</b-button>
+                </div>
+                <Keyboard v-model="searchInput" :layouts="[
             '1234567890{delete:backspace}|qwertyuiop|asdfghjkl|{shift:goto:1}zxcvbnm|{space:space}{clear:clear}',
             '!@#$%^&*(){delete:backspace}|QWERTYUIOP|ASDFGHJKL|{shift:goto:0}ZXCVBNM|{space:space}{clear:clear}'
             ]" :maxlength="20">
-        </Keyboard>
+                </Keyboard>
+            </div>
+        </b-modal>
     </div>
-    
+
 </template>
 
 <script>
 
 import Keyboard from 'vue-keyboard'
-
+import { mapActions, mapState } from 'vuex';
 export default {
     name: 'search',
     components: {
         Keyboard
     },
     data: () => ({
-        isOpen: false,
         searchInput: ''
     }),
     methods: {
-        toggle() {
-            this.isOpen = !this.isOpen
+        searchGrants() {
+            this.$store.dispatch('searchGrants', this.searchInput)
+                .then(() => {
+                    this.$router.push('/grants/search/' + this.searchInput)
+              })
         }
     }
 }

@@ -46,7 +46,7 @@
             addFilter(region) {
                 let regionFilter = { name: region.name, id: region.id }
                 this.$store.commit('FILTER_REGION', regionFilter)
-                this.$router.push('/grants/' + region.name.replace(" ", "-").toLowerCase());
+                this.$router.push('/grants/region/' + region.name.replace(" ", "-").toLowerCase());
             }
         },
         computed: mapState(['regions'])

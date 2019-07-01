@@ -54,6 +54,12 @@ export default new Vuex.Store({
         },
         FILTER_YEAR(state, year) {
             state.year = year
+        },
+        SEARCH(state, val) {
+            state.year = '';
+            state.region = '';
+            state.topic = '';
+            state.search = val
         }
     },
     actions: {
@@ -63,6 +69,10 @@ export default new Vuex.Store({
         },
         resetState({ commit }) {
             commit('RESET_GRANTS')
+        },
+
+        searchGrants({ commit }, keyword) {
+            commit('SEARCH', keyword)
         }
   }
 })
