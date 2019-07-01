@@ -26,7 +26,12 @@ export default new Router({
         props: true,
         component: () => import(/* webpackChunkName: "about" */ './views/Grants.vue')
       },
-
+      {
+          path: '/grants/:filter?',
+          name: 'region-grants',
+          props: true,
+          component: () => import(/* webpackChunkName: "about" */ './views/Grants.vue')
+      },
       {
           path: '/grants/region/:filter?',
           name: 'region-grants',
