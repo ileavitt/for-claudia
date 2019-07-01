@@ -29,7 +29,6 @@
             },
             placeImg() {
               var imgContainer = document.getElementsByClassName('img-container')
-              console.log(imgContainer.length)
               imgContainer[0].innerHTML = '<img src="/img/sun.9240fa97.gif" class="card-img" />'
               imgContainer[1].innerHTML = '<img src="/img/arrow.04a4b532.gif" class="card-img" />'
               imgContainer[2].innerHTML = '<img src="/img/hat.f0b0fb2c.gif" class="card-img" />'
