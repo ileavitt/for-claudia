@@ -10,6 +10,9 @@ export default new Vuex.Store({
       grantTotal: 1000,
       grantCount: 800,
       grants: [],
+      regions: [],
+      topics: [],
+      years: [],
       region: '',
       year: '',
       topic: '',
@@ -17,7 +20,6 @@ export default new Vuex.Store({
   },
     mutations: {
         SET_GRANTS(state, payload) {
-            console.log(payload)
             state.region = payload.filters.region || '';
             state.years = payload.filters.years || '';
             state.topic - payload.filters.topic || '';
@@ -26,7 +28,7 @@ export default new Vuex.Store({
             state.grantTotal = payload.grants.totalAmount
             state.grants = payload.grants.grants;
         },
-      RESET_GRANTS() {
+      RESET_GRANTS(state) {
           state.year = '';
           state.region = '';
           state.topic = '';
@@ -34,7 +36,31 @@ export default new Vuex.Store({
           state.grantTotal = 10000;
           state.grantCount = 10000;
           state.search = '';
-      }
+        },
+        SET_YEARS(state) {
+            state.years = [2010, 2011, 2012, 2013]
+        },
+        SET_REGIONS(state) {
+            state.regions = data.regions;
+        },
+        SET_TOPICS(state) {
+            state.topics = data.topicGroups
+        },
+        FILTER_TOPIC(state, topic) {
+            state.topic = topic
+        },
+        FILTER_REGION(state, region) {
+            state.region = region
+        },
+        FILTER_YEAR(state, year) {
+            state.year = year
+        },
+        SEARCH(state, val) {
+            state.year = '';
+            state.region = '';
+            state.topic = '';
+            state.search = val
+        }
     },
     actions: {
         loadFiltered({ commit }, filters) {
@@ -43,6 +69,10 @@ export default new Vuex.Store({
         },
         resetState({ commit }) {
             commit('RESET_GRANTS')
+        },
+
+        searchGrants({ commit }, keyword) {
+            commit('SEARCH', keyword)
         }
   }
 })

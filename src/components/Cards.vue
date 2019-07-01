@@ -1,29 +1,16 @@
-
 <template>
     <b-container>
         <b-row>
             <b-card-group deck>
-                <b-card v-for="data in topics" header-bg-variant="primary" align="center" class="shadow" :id="data.id" :key="data.id">
+                <b-card v-for="topic in topics" header-bg-variant="primary" align="center" class="shadow" @click="routing(topic)" :id="topic.id" :key="topic.id">
                     <div slot="header" class="mb-0 img-container">
                     </div>
                     <b-card-text>
-                        <h3 class="topic-header">{{data.name}}</h3>
-                        <div class="topic-grants">{{ format(data.totalGrants)}}</div>
-                        <div class="topic-total">${{ format(data.totalAmount) }}</div>
+                        <h3 class="topic-header">{{topic.name}}</h3>
+                        <div class="topic-grants">{{ format(topic.totalGrants)}}</div>
+                        <div class="topic-total">${{ format(topic.totalAmount) }}</div>
                     </b-card-text>
                 </b-card>
-                    <!-- <b-card v-for="data in topics" header-tag="header" header-bg-variant="primary" align="center" class="shadow" :id="data.id" :key="data.id">
-                        <div slot="header" class="mb-0">
-                            <div class="img-container">
-                                <globe></globe>
-                            </div>
-                        </div>
-                        <b-card-text>
-                            <h3 class="topic-header">{{data.name}}</h3>
-                            <div class="topic-grants">{{ format(data.totalGrants)}}</div>
-                            <div class="topic-total">${{ format(data.totalAmount) }}</div>
-                        </b-card-text>
-                    </b-card> -->
             </b-card-group>
         </b-row>
     </b-container>
@@ -32,16 +19,13 @@
 <script>
     import topicGroups from '../db.json'
     import globe from '@/components/Globe.vue'
-
+    import { mapState } from 'vuex'
+    
     export default {
         name: 'cards',
-        components: {
-            globe
-        },
-        data() {
-            return {
-                topics: topicGroups.topicGroups
-            }
+        mounted() {
+            this.$store.commit('SET_TOPICS'),
+            this.placeImg()
         },
         methods: {
             format(value) {
@@ -53,11 +37,14 @@
               imgContainer[1].innerHTML = '<img src="/img/arrow.04a4b532.gif" class="card-img" />'
               imgContainer[2].innerHTML = '<img src="/img/hat.f0b0fb2c.gif" class="card-img" />'
               imgContainer[3].innerHTML = '<img src="/img/globe.1120e292.gif" class="card-img" />'
+            },
+            routing: function (data) {
+                let topicFilter = {name: data.name, id: data.id}
+                this.$store.commit('FILTER_TOPIC', topicFilter)
+                this.$router.push('/grants/topic/' + data.name.replace(" ", "-").toLowerCase())
             }
         },
-        mounted: function() {
-            this.placeImg()
-        }
+        computed: mapState(['topics', 'topic'])
 }
 </script>
 

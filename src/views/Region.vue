@@ -19,8 +19,9 @@ export default {
 
 <style scoped>
     #world-map {
-        background: url('~@/assets/map.png') no-repeat center;
-        width: 100%;
-        height: 656px;
+        background: url('~@/assets/map.gif') no-repeat center;
+        margin: auto;
+        width: 1920px;
+        height: 700px;
     }
 </style>

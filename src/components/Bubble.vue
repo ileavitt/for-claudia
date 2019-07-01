@@ -1,54 +1,55 @@
 <template>
     <div>
-        <router-link :to="{path: '/grants/north-america'}" regionId class="pulsing-bubble md north-am">
+        <div v-on:click="addFilter(regions[0])" regionId class="pulsing-bubble md north-am">
             <span class="pulsing-text">VIEW</span>
-        </router-link>
-        <div class="north-am-info"><div class="region-name">{{regions[0].name}}</div>{{ format(regions[0].totalGrants)}} <br /> ${{ format(regions[0].totalAmount) }}</div>
+        </div>
+        <div class="north-am-info" v-if="regions[0]"><div class="region-name">{{regions[0].name}}</div>{{ format(regions[0].totalGrants)}} <br /> ${{ format(regions[0].totalAmount) }}</div>
 
-        <router-link :to="{path: '/grants/south-america'}" class="pulsing-bubble sm south-am">
+        <div v-on:click="addFilter(regions[5])" class="pulsing-bubble sm south-am">
             <span class="pulsing-text">VIEW</span>
-        </router-link>
-        <div class="south-am-info"><div class="region-name">{{regions[5].name}}</div> {{ format(regions[5].totalGrants)}} <br /> ${{ format(regions[5].totalAmount) }}</div>
+        </div>
+        <div class="south-am-info" v-if="regions[5]"><div class="region-name">{{regions[5].name}}</div> {{ format(regions[5].totalGrants)}} <br /> ${{ format(regions[5].totalAmount) }}</div>
 
-        <router-link :to="{path: '/grants/europe'}" class="pulsing-bubble sm europe">
+        <div v-on:click="addFilter(regions[6])" class="pulsing-bubble sm europe">
             <span class="pulsing-text">VIEW</span>
-        </router-link>
-        <div class="europe-info"><div class="region-name">{{regions[6].name}}</div>{{ format(regions[6].totalGrants)}} <br /> ${{ format(regions[6].totalAmount) }}</div>
+        </div>
+        <div class="europe-info" v-if="regions[6]"><div class="region-name">{{regions[6].name}}</div>{{ format(regions[6].totalGrants)}} <br /> ${{ format(regions[6].totalAmount) }}</div>
 
-        <router-link :to="{path: '/grants/africa'}" class="pulsing-bubble md africa">
+        <div v-on:click="addFilter(regions[2])" class="pulsing-bubble md africa">
             <span class="pulsing-text">VIEW</span>
-        </router-link>
-        <div class="africa-info"><div class="region-name">{{regions[2].name}}</div>{{ format(regions[2].totalGrants)}} <br /> ${{ format(regions[2].totalAmount) }}</div>
+        </div>
+        <div class="africa-info" v-if="regions[2]"><div class="region-name">{{regions[2].name}}</div>{{ format(regions[2].totalGrants)}} <br /> ${{ format(regions[2].totalAmount) }}</div>
 
-        <router-link :to="{path: '/grants/oceana'}" class="pulsing-bubble sm oceana">
+        <div v-on:click="addFilter(regions[4])" class="pulsing-bubble sm oceana">
             <span class="pulsing-text">VIEW</span>
-        </router-link>
-        <div class="oceana-info"><div class="region-name">{{regions[4].name}}</div>{{ format(regions[4].totalGrants)}} <br /> ${{ format(regions[4].totalAmount) }}</div>
+        </div>
+        <div class="oceana-info" v-if="regions[4]"><div class="region-name">{{regions[4].name}}</div>{{ format(regions[4].totalGrants)}} <br /> ${{ format(regions[4].totalAmount) }}</div>
 
-        <router-link :to="{path: '/grants/asia'}" class="pulsing-bubble lg asia">
+        <div v-on:click="addFilter(regions[1])" class="pulsing-bubble lg asia">
             <span class="pulsing-text">VIEW</span>
-        </router-link>
-        <div class="asia-info"><div class="region-name">{{regions[1].name}}</div>{{ format(regions[1].totalGrants)}} <br /> ${{ format(regions[1].totalAmount) }}</div>
+        </div>
+        <div class="asia-info" v-if="regions[1]"><div class="region-name">{{regions[1].name}}</div>{{ format(regions[1].totalGrants)}} <br /> ${{ format(regions[1].totalAmount) }}</div>
     </div>
 </template>
 
 <script>
-    import regions from '../db.json'
-export default {
+    import { mapState } from 'vuex'
+    export default {
         name: 'bubble',
-        data() {
-            return {
-                regions: regions.regions
-            }
+        mounted() {
+            this.$store.commit('SET_REGIONS')
         },
         methods: {
             format(value) {
                 return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            },
+            addFilter(region) {
+                let regionFilter = { name: region.name, id: region.id }
+                this.$store.commit('FILTER_REGION', regionFilter)
+                this.$router.push('/grants/region/' + region.name.replace(" ", "-").toLowerCase());
             }
         },
-        props: {
-            text: String
-        }
+        computed: mapState(['regions'])
 }
 </script>
 
@@ -61,20 +62,6 @@ export default {
     vertical-align: middle;
     text-align: center;
 }
-
-/* .pulsing-bubble:before {
-    content: '';
-    position: relative;
-    display: block;
-    width: 300%;
-    height: 300%;
-    box-sizing: border-box;
-    margin-left: -100%;
-    margin-top: -100%;
-    border-radius: 50%;
-    background-color: #3086AB;
-    animation: pulse-ring 1.9s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-}*/
   
 .pulsing-bubble:after {
     content: '';
