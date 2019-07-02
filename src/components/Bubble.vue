@@ -5,32 +5,32 @@
         </div> -->
 
         <!-- <div v-on:click="addFilter(regions[0])" class="region north-am">
-            <img class="gif-sm" src="@/assets/view-sm.gif" />
+            <img class="bubble" src="@/assets/view-sm.gif" />
         </div>
         <div class="north-am-info" v-if="regions[0]"><div class="region-name">{{regions[0].name}}</div>{{ format(regions[0].totalGrants)}} <br /> ${{ format(regions[0].totalAmount) }}</div>
 
         <div v-on:click="addFilter(regions[5])" class="region south-am">
-            <img class="gif-md" src="@/assets/view-md.gif" />
+            <img class="bubble" src="@/assets/view-md.gif" />
         </div>
         <div class="south-am-info" v-if="regions[5]"><div class="region-name">{{regions[5].name}}</div> {{ format(regions[5].totalGrants)}} <br /> ${{ format(regions[5].totalAmount) }}</div>
 
         <div v-on:click="addFilter(regions[6])" class="region europe">
-            <img class="gif-lg" src="@/assets/view-sm.gif" />
+            <img class="bubble" src="@/assets/view-sm.gif" />
         </div>
         <div class="europe-info" v-if="regions[6]"><div class="region-name">{{regions[6].name}}</div>{{ format(regions[6].totalGrants)}} <br /> ${{ format(regions[6].totalAmount) }}</div>
 
-        <div v-on:click="addFilter(regions[2])" class="africa">
-            <img src="@/assets/view-lg.gif" />
+        <div v-on:click="addFilter(regions[2])" class="region africa">
+            <img class="bubble" src="@/assets/view-lg.gif" />
         </div>
         <div class="africa-info" v-if="regions[2]"><div class="region-name">{{regions[2].name}}</div>{{ format(regions[2].totalGrants)}} <br /> ${{ format(regions[2].totalAmount) }}</div>
 
-        <div v-on:click="addFilter(regions[4])" class="oceana">
-            <img src="@/assets/view-md.gif" />
+        <div v-on:click="addFilter(regions[4])" class="region oceana">
+            <img class="bubble" src="@/assets/view-md.gif" />
         </div>
         <div class="oceana-info" v-if="regions[4]"><div class="region-name">{{regions[4].name}}</div>{{ format(regions[4].totalGrants)}} <br /> ${{ format(regions[4].totalAmount) }}</div>
 
-        <div v-on:click="addFilter(regions[1])" class="asia">
-            <img src="@/assets/view-sm.gif" />
+        <div v-on:click="addFilter(regions[1])" class="region asia">
+            <img class="bubble" src="@/assets/view-sm.gif" />
         </div>
         <div class="asia-info" v-if="regions[1]"><div class="region-name">{{regions[1].name}}</div>{{ format(regions[1].totalGrants)}} <br /> ${{ format(regions[1].totalAmount) }}</div> -->
     </div>
@@ -58,20 +58,10 @@
 </script>
 
 <style scoped>
-/* .gif-sm {
+.bubble {
     height:50%;
     width:50%;
 }
-
-.gif-md {
-    height:70%;
-    width:70%;
-}
-
-.gif-lg {
-    height:90%;
-    width:90%;
-} */
 
 .region {
     position:absolute;
@@ -155,8 +145,8 @@
     font-stretch: expanded;
 }
 
-/*
-.pulsing-bubble {
+
+/*.pulsing-bubble {
     position: absolute;
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
