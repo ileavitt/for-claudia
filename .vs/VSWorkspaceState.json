@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\delete"
+    "\\src\\components",
+    "\\src\\store",
+    "\\src\\views"
   ],
   "SelectedNode": "\\delete",
   "PreviewInSolutionExplorer": false
