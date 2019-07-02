@@ -1,5 +1,5 @@
 <template>
-    <b-container class="grant-total" fluid>
+    <b-container class="grant-total">
         <b-row align-h="center">
             <b-col cols="3">
                 <span class="counter">{{ numberWithCommas(Count) }}</span><span class="grant-text">GRANTS</span>
