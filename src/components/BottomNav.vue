@@ -1,18 +1,18 @@
 <template>
     <b-container>
-        <b-row>
-            <b-col cols="2">
-                <b-button-group class="mb-10 shadow-bg" size="lg">
-                    <router-link to="/" class="text-uppercase btn-style">region</router-link>
-                    <router-link to="/topics" class="text-uppercase btn-style">topic</router-link>
+        <b-row align-h="center">
+            <b-col cols="4">
+                <b-button-group class="shadow-bg" size="lg">
+                    <router-link to="/" class="text-uppercase btn-style"><span class="btn-group-text">region</span></router-link>
+                    <router-link to="/topics" class="text-uppercase btn-style"><span class="btn-group-text">topic</span></router-link>
                 </b-button-group>
             </b-col>
-            <b-col cols="2" offset="2">
-                <b-button-group class="mb-10 shadow-bg" size="lg">
-                    <router-link to="/grants/all-grants" class="text-uppercase btn-style">view all grants</router-link>
+            <b-col cols="2" offset="1">
+                <b-button-group class="shadow-bg" size="md">
+                    <router-link to="/grants/all-grants" class="text-uppercase btn-style"><span class="btn-group-text">view all grants</span></router-link>
                 </b-button-group>
             </b-col>
-            <b-col cols="1" offset="4">
+            <b-col cols="2" offset="3">
                 <search></search>
             </b-col>
         </b-row>
@@ -31,35 +31,44 @@ export default {
 </script>
 
 <style scoped>
-    .no-radius {
-        border-radius: 0!important;
-    }
+.no-radius {
+    border-radius: 0!important;
+}
 
-    .mb-10 {
-        margin-bottom: 10rem;
-    }
+.mb-10 {
+    margin-bottom: 10rem;
+}
 
-    .btn-group-lg > .btn {
-        padding:1rem 2rem;
-    }
+.toggle-btn.active {
+    background-color: #3086AB;
+    border-color: #3086AB;
+}
 
-    .toggle-btn.active {
-        background-color: #3086AB;
-        border-color: #3086AB;
-    }
+.btn-style {
+    color:#000;
+    padding:1.1rem 0;
+}
 
-    .btn-style {
-        color:#000;
-        padding:1.2rem 2.5rem;
-    }
+.btn-group-lg > a {
+    width:250px;
+}
 
-    .btn-style.router-link-exact-active {
-        background-color:#3086AB;
-        color:#fff;
-    }
+.btn-group-md > a {
+    width:400px;
+}
 
-    .btn-style:hover,
-    .btn-style:active {
-        text-decoration:none;
-    }
+.btn-group-text {
+    font-family:'Dinot-Bold';
+    font-size:30px;
+}
+
+.btn-style.router-link-exact-active {
+    background-color:#236480;
+    color:#fff;
+}
+
+.btn-style:hover,
+.btn-style:active {
+    text-decoration:none;
+}
 </style>

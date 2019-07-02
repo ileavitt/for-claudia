@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import data from '../db.json'
 import GrantService from '@/services/GrantService'
+import '@/assets/css/base.css'
 
 Vue.use(Vuex)
 

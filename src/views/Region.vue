@@ -11,7 +11,7 @@ import bubble from '@/components/Bubble.vue';
 export default {
   name: 'region',
   components: {
-    bubble
+    bubble,
   }
 }
 </script>
@@ -19,9 +19,9 @@ export default {
 
 <style scoped>
     #world-map {
-        background: url('~@/assets/map.gif') no-repeat center;
+        background: url('~@/assets/map2.png') no-repeat center;
         margin: auto;
-        width: 1920px;
-        height: 700px;
+        width: 1258px;
+        height: 656px;
     }
 </style>
