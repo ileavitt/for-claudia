@@ -17,6 +17,7 @@
         name: 'grantTotal',
         created() {
             this.$store.dispatch('totalCount')
+        },
         methods: {
             numberWithCommas(x) {
                 return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

@@ -32,9 +32,6 @@ export default {
             this.$store.dispatch('setYears')
             this.$store.dispatch('setRegions')
             this.$store.dispatch('setTopics')
-        },
-        components: {
-            grantTotal
         }
 }
 </script>
