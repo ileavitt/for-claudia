@@ -1,6 +1,4 @@
 <template>
-    <!-- <b-container class="bottom-filter-nav fixed-bottom">
-         <b-row class="w-100 justify-content-center"> -->
     <b-container class="bottom-filter-nav fixed-bottom">
         <b-row align-h="center">
             <b-col cols="2">
@@ -10,8 +8,11 @@
                 <b-row align-h="center">
                     <b-col cols="4" class="text-left" v-if="$route.name !== 'search-grants'">
                         <b-form-group label="Year" >
-                            <b-form-select v-model="yearSelected" v-on:change="applyYearFilter" :options="years" class="shadow-bg">
+                            <b-form-select v-model="yearSelected" v-on:change="applyYearFilter" class="shadow-bg">
                                 <option value="" disabled selected hidden>All years</option>
+                                <option v-for="year in years" :value="year" v-bind:key="year.id">
+                                    {{year.name}}
+                                </option>
                             </b-form-select>
                         </b-form-group>
                     </b-col>
@@ -38,7 +39,6 @@
                 </b-row>
             </b-col>
             <b-col cols="1" offset="1">
-                <!-- <search class="nav-button"></search> -->
                 <search></search>
             </b-col>
         </b-row>
@@ -61,11 +61,6 @@
                 regionSelected: this.$store.state.region
             }
         },
-        mounted() {
-            this.$store.commit('SET_YEARS')
-            this.$store.commit('SET_REGIONS')
-            this.$store.commit('SET_TOPICS')
-        },
         methods: {
             resetGrants() {
                 this.$store.dispatch('resetState')
@@ -74,15 +69,19 @@
                     })
             },
             applyYearFilter: function () {
-                this.$store.commit('FILTER_YEAR', this.yearSelected)
+                let yearSelected = { id: this.yearSelected.id, name: this.yearSelected.name }
+                this.$store.commit('FILTER_YEAR', yearSelected)
+                this.$store.dispatch('loadFiltered')
             },
             applyTopicFilter: function () {
                 let topicSelected = { id: this.topicSelected.id, name: this.topicSelected.name }
                 this.$store.commit('FILTER_TOPIC', topicSelected)
+                this.$store.dispatch('loadFiltered')
             },
             applyRegionFilter: function () {
                 let regionSelected = { id: this.regionSelected.id, name: this.regionSelected.name }
                 this.$store.commit('FILTER_REGION', regionSelected)
+                this.$store.dispatch('loadFiltered')
             }
         },
         computed: {

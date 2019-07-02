@@ -1,21 +1,17 @@
 <template>
     <div role="tablist">
-        <div class="filter">{{$route.name == 'search-grants' ? 'Search Results:' : null}} {{$route.params.filter ? transform($route.params.filter) : null}}</div>
         <transition name="fade">
             <div class="loading" v-show="loading">
                 <span class="fa fa-spinner fa-spin"></span> Loading
             </div>
         </transition>
-        <b-container class="grantList">
+        <b-container class="grantList" id="infinite-scroll">
                 <b-row>
                     <b-col cols="2">
-                        <div>region:{{region.name}}</div>
-                        <div>topic:{{topic.name}}</div>
-                        <div>Year:{{year}}</div>
-                        <div>search: {{search}}</div>
+                        <div>year</div>
                     </b-col>
                         <b-col class="panel-left col-5">
-                            <b-card no-body v-for="(data, index) in grants" v-if="index % 2" v-bind:key="data.grants">
+                            <b-card no-body v-for="(data, index) in grantScroll" v-if="index % 2" v-bind:key="data.grants">
                                 <b-card-header class="p-1 animated fadeInUpBig" header-tag="header" role="tab">
                                     <b-button block href="#" variant="info" v-b-toggle="'accordion' + data.id"></b-button>
                                     {{data.organization.name}} <br />${{data.amount}}
@@ -28,7 +24,7 @@
                             </b-card>
                         </b-col>
                         <b-col class="panel-left col-5">
-                            <b-card no-body class="mb-1" v-for="(data, index) in grants" v-if="indexmath(index)" v-bind:key="data.grants">
+                            <b-card no-body class="mb-1" v-for="(data, index) in grantScroll" v-if="indexmath(index)" v-bind:key="data.grants">
                                 <b-card-header class="p-1 animated fadeInUpBig" header-tag="header" role="tab">
                                     <b-button block href="#" variant="info" v-b-toggle="'accordion' + data.id"></b-button>
                                     {{data.organization.name}} <br />${{data.amount}}
@@ -57,20 +53,18 @@
             }
         },
         mounted() {
-            const listElm = document.querySelector('#infinite-list');
-            listElm.addEventListener('scrolll')
-
-            var filters = {
-                region: this.$store.state.region,
-                year: this.$store.state.year,
-                topic: this.$store.state.topic
+            if (this.$route.name === 'region-grants' || this.$route.name === 'grants' || this.$route.name === 'topic-grants') {
+                this.$store.dispatch('loadFiltered')
             }
-            this.$store.dispatch('loadFiltered', filters)
+            const listElm = document.querySelector('#infinite-scroll');
+            listElm.addEventListener("scroll", e => {
+                if (listElm.scrollTop + listElm.clientHeight >= listElm.scrollHeight) {
+                    this.loadMore();
+                }
+            });
+            this.grantScroll = this.$store.state.grants;
         },
         methods: {
-            transform(value) {
-                return value.replace("-", " ")
-            },
             formatDate(value) {
                 var moment = require('moment');
                 var grantDate = moment(value).format('MMMM YYYY')
@@ -79,10 +73,15 @@
             indexmath(val) {
                 if (val % 2) return false
                 else return true
-            }
+            },
+            loadMore() {
+                this.loading = true;
+                console.log("loading")
+                this.loading = false;
+            },
         },
         computed: {
-            ...mapState(['grants', 'region', 'topic', 'year', 'search'])
+            ...mapState(['grants'])
         }
 }
 </script>
@@ -140,13 +139,5 @@
     font-weight: 900;
     content: "\f055";
 }
-
-
-    .filter {
-        color: #392d1c;
-        font-weight: bold;
-        font-size: 36px;
-        text-transform: capitalize;
-    }
 </style>
 

@@ -2,10 +2,10 @@
     <b-container class="grant-total" fluid>
         <b-row align-h="center">
             <b-col cols="3">
-                <span class="counter">{{ numberWithCommas(grantTotal) }}</span><span class="grant-text">GRANTS</span>
+                <span class="counter">{{ numberWithCommas(Count) }}</span><span class="grant-text">GRANTS</span>
             </b-col>
             <b-col cols="6">
-                <span class="counter">${{ numberWithCommas(grantCount) }}</span><span class="grant-text">provided since 1999</span>
+                <span class="counter">${{ numberWithCommas(Amount) }}</span><span class="grant-text">provided since 1999</span>
             </b-col>
         </b-row>
     </b-container>
@@ -15,15 +15,17 @@
     import {mapState} from 'vuex'
     export default {
         name: 'grantTotal',
+        created() {
+            this.$store.dispatch('totalCount')
+        },
         methods: {
             numberWithCommas(x) {
                 return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             }
         },
         computed: mapState([
-            'grantTotal', 'grantCount'
+            'Amount', 'Count'
         ])
-
     }
 </script>
 

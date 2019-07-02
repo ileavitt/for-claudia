@@ -39,7 +39,6 @@
             }
         },
         mounted() {
-            this.$store.commit('SET_TOPICS'),
             this.$nextTick(function () {
                 this.placeImg()
             })
