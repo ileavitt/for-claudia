@@ -27,10 +27,10 @@
             },
             placeImg() {
               var imgContainer = document.getElementsByClassName('img-container')
-              imgContainer[0].innerHTML = '<img src="/img/sun.9240fa97.gif" class="card-img" />'
-              imgContainer[1].innerHTML = '<img src="/img/arrow.04a4b532.gif" class="card-img" />'
-              imgContainer[2].innerHTML = '<img src="/img/hat.f0b0fb2c.gif" class="card-img" />'
-              imgContainer[3].innerHTML = '<img src="/img/globe.1120e292.gif" class="card-img" />'
+              imgContainer[0].innerHTML = '<img src="/img/sun.gif" class="card-img" />'
+              imgContainer[1].innerHTML = '<img src="/img/arrow.gif" class="card-img" />'
+              imgContainer[2].innerHTML = '<img src="/img/hat.gif" class="card-img" />'
+              imgContainer[3].innerHTML = '<img src="/img/globe.gif" class="card-img" />'
             },
             routing: function (data) {
                 let topicFilter = {name: data.name, id: data.id}
@@ -48,32 +48,32 @@
 </script>
 
 <style>
-.card-deck {
-    margin: auto auto 10vh;
-}
-.card-header {
-    min-height: 22vh;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-}
-.card-img {
-    width:20%;
-    height:20%;
-}
-.topic-header {
-    padding-top: 25px;
-    min-height: 15vh;
-    font-weight: 600;
-    font-stretch: expanded;
-}
-.topic-grants {
-    font-size: 30px;
-}
-.topic-total {
-    font-size: 20px;
-}
-.bg-primary {
-    background-color: #ce6b29 !important;
-}
+    .card-deck {
+        margin: auto auto 10vh;
+    }
+    .card-header {
+        min-height: 22vh;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+    .card-img {
+        width:20%;
+        height:20%;
+    }
+    .topic-header {
+        padding-top: 25px;
+        min-height: 15vh;
+        font-weight: 600;
+        font-stretch: expanded;
+    }
+    .topic-grants {
+        font-size: 30px;
+    }
+    .topic-total {
+        font-size: 20px;
+    }
+    .bg-primary {
+        background-color: #ce6b29 !important;
+    }
 </style>

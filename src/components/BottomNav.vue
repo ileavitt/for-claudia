@@ -1,18 +1,18 @@
 <template>
-    <b-container>
-        <b-row>
-            <b-col cols="2">
-                <b-button-group class="mb-10 shadow-bg" size="lg">
-                    <router-link to="/" class="text-uppercase btn-style">region</router-link>
-                    <router-link to="/topics" class="text-uppercase btn-style">topic</router-link>
+    <b-container id="bottom-nav" class="fixed-bottom">
+        <b-row align-h="center">
+            <b-col cols="4">
+                <b-button-group class="shadow-bg" size="lg">
+                    <router-link to="/" class="text-uppercase btn-style"><span class="btn-group-text">region</span></router-link>
+                    <router-link to="/topics" class="text-uppercase btn-style"><span class="btn-group-text">topic</span></router-link>
                 </b-button-group>
             </b-col>
-            <b-col cols="2" offset="2">
-                <b-button-group class="mb-10 shadow-bg" size="lg">
-                    <router-link to="/grants/all-grants" class="text-uppercase btn-style">view all grants</router-link>
+            <b-col cols="6">
+                <b-button-group class="shadow-bg" size="md">
+                    <router-link to="/grants/all-grants" class="text-uppercase btn-style"><span class="btn-group-text">view all grants</span></router-link>
                 </b-button-group>
             </b-col>
-            <b-col cols="1" offset="4">
+            <b-col cols="1" offset="1">
                 <search></search>
             </b-col>
         </b-row>
@@ -31,16 +31,16 @@ export default {
 </script>
 
 <style scoped>
+    #bottom-nav {
+        bottom:80px;
+    }
+
     .no-radius {
         border-radius: 0!important;
     }
 
     .mb-10 {
         margin-bottom: 10rem;
-    }
-
-    .btn-group-lg > .btn {
-        padding:1rem 2rem;
     }
 
     .toggle-btn.active {
@@ -50,11 +50,24 @@ export default {
 
     .btn-style {
         color:#000;
-        padding:1.2rem 2.5rem;
+        padding:1.1rem 0;
+    }
+
+    .btn-group-lg > a {
+        width:250px;
+    }
+
+    .btn-group-md > a {
+        width:400px;
+    }
+
+    .btn-group-text {
+        font-family:'Dinot-Bold';
+        font-size:30px;
     }
 
     .btn-style.router-link-exact-active {
-        background-color:#3086AB;
+        background-color:#236480;
         color:#fff;
     }
 

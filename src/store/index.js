@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
 import db from '../db.json';
 import VueAxios from 'vue-axios';
+=======
+import Vue from 'vue'
+import Vuex from 'vuex'
+import data from '../db.json'
+import GrantService from '@/services/GrantService'
+import '@/assets/css/base.css'
+>>>>>>> 0885c33cdcf8f58a26f3bf134057801665c537ff
 
 Vue.use(Vuex)
 Vue.use(VueAxios, axios)
