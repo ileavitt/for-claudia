@@ -37,7 +37,6 @@
     }
 
     .counter {
-        font-size: 65px;
         display: inline-block;
         -webkit-animation: flip .2s 2 linear;
         animation: flipX .2s 2 linear;
@@ -45,9 +44,8 @@
 
     .filter {
         color: #392d1c;
-        font-weight: bold;
+        font-family: 'Dinot-Bold';
         font-size: 36px;
-        text-transform: capitalize;
     }
 
     .grant-text {
