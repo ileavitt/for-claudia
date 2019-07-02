@@ -31,48 +31,48 @@ export default {
 </script>
 
 <style scoped>
-#bottom-nav {
-    bottom:80px;
-}
+    #bottom-nav {
+        bottom:80px;
+    }
 
-.no-radius {
-    border-radius: 0!important;
-}
+    .no-radius {
+        border-radius: 0!important;
+    }
 
-.mb-10 {
-    margin-bottom: 10rem;
-}
+    .mb-10 {
+        margin-bottom: 10rem;
+    }
 
-.toggle-btn.active {
-    background-color: #3086AB;
-    border-color: #3086AB;
-}
+    .toggle-btn.active {
+        background-color: #3086AB;
+        border-color: #3086AB;
+    }
 
-.btn-style {
-    color:#000;
-    padding:1.1rem 0;
-}
+    .btn-style {
+        color:#000;
+        padding:1.1rem 0;
+    }
 
-.btn-group-lg > a {
-    width:250px;
-}
+    .btn-group-lg > a {
+        width:250px;
+    }
 
-.btn-group-md > a {
-    width:400px;
-}
+    .btn-group-md > a {
+        width:400px;
+    }
 
-.btn-group-text {
-    font-family:'Dinot-Bold';
-    font-size:30px;
-}
+    .btn-group-text {
+        font-family:'Dinot-Bold';
+        font-size:30px;
+    }
 
-.btn-style.router-link-exact-active {
-    background-color:#236480;
-    color:#fff;
-}
+    .btn-style.router-link-exact-active {
+        background-color:#236480;
+        color:#fff;
+    }
 
-.btn-style:hover,
-.btn-style:active {
-    text-decoration:none;
-}
+    .btn-style:hover,
+    .btn-style:active {
+        text-decoration:none;
+    }
 </style>
