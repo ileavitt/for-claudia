@@ -1,38 +1,45 @@
 <template>
-    <b-container class="bottom-filter-nav">
-        <b-row class="w-100 justify-content-center">
-            <b-col cols="1" offset="1">
-                    <b-button class="btn-blue nav-button" v-on:click="resetGrants"><i class="material-icons md-48">chevron_left</i></b-button>
+    <!-- <b-container class="bottom-filter-nav fixed-bottom">
+         <b-row class="w-100 justify-content-center"> -->
+    <b-container class="bottom-filter-nav fixed-bottom">
+        <b-row align-h="center">
+            <b-col cols="2">
+                <b-button class="btn-blue nav-button" v-on:click="resetGrants"><i class="material-icons md-48">chevron_left</i></b-button>
             </b-col>
-                <b-col v-if="$route.name !== 'search-grants'">
-                    <b-form-group class="form-label" v-bind:class="($route.name !== 'search-grants')? 'filter-adjust-right' : ''" label="Year" >
-                        <b-form-select v-model="yearSelected" v-on:change="applyYearFilter" :options="years">
-                            <option value="" disabled selected hidden>All years</option>
-                        </b-form-select>
-                    </b-form-group>
-                </b-col>
-                <b-col v-if="$route.name == 'region-grants'">
-                    <b-form-group class="form-label" v-bind:class="($route.name == 'region-grants')? 'filter-adjust-left' : ''"  label="Topic">
-                        <b-form-select id="topic-filter" v-model="topicSelected" v-on:change="applyTopicFilter">
-                            <option value="" disabled selected hidden>All topics</option>
-                            <option v-for="topic in topics" :value="topic" v-bind:key="topic.id">
-                                {{topic.name}}
-                            </option>
-                        </b-form-select>
-                    </b-form-group>
-                </b-col>
-                <b-col v-if="$route.name == 'topic-grants'">
-                    <b-form-group class="form-label" v-bind:class="($route.name == 'topic-grants')? 'filter-adjust-left' : ''" label="Region"  >
-                        <b-form-select v-model="regionSelected" v-on:change="applyRegionFilter">
-                            <option value="" disabled selected hidden>All regions</option>
-                            <option v-for="region in regions" :value="region" v-bind:key="region.id">
-                                {{region.name}}
-                            </option>
-                        </b-form-select>
-                    </b-form-group>
-                </b-col>
-            <b-col cols="1">
-                    <search class="nav-button"></search>
+            <b-col cols="8">
+                <b-row align-h="center">
+                    <b-col cols="4" class="text-left" v-if="$route.name !== 'search-grants'">
+                        <b-form-group label="Year" >
+                            <b-form-select v-model="yearSelected" v-on:change="applyYearFilter" :options="years" class="shadow-bg">
+                                <option value="" disabled selected hidden>All years</option>
+                            </b-form-select>
+                        </b-form-group>
+                    </b-col>
+                    <b-col cols="4" class="text-left" v-if="$route.name == 'region-grants'">
+                        <b-form-group label="Topic">
+                            <b-form-select id="topic-filter" v-model="topicSelected" v-on:change="applyTopicFilter" class="shadow-bg">
+                                <option value="" disabled selected hidden>All topics</option>
+                                <option v-for="topic in topics" :value="topic" v-bind:key="topic.id">
+                                    {{topic.name}}
+                                </option>
+                            </b-form-select>
+                        </b-form-group>
+                    </b-col>
+                    <b-col cols="4" class="text-left" v-if="$route.name == 'topic-grants'">
+                        <b-form-group label="Region">
+                            <b-form-select v-model="regionSelected" v-on:change="applyRegionFilter" class="shadow-bg">
+                                <option value="" disabled selected hidden>All regions</option>
+                                <option v-for="region in regions" :value="region" v-bind:key="region.id">
+                                    {{region.name}}
+                                </option>
+                            </b-form-select>
+                        </b-form-group>
+                    </b-col>
+                </b-row>
+            </b-col>
+            <b-col cols="1" offset="1">
+                <!-- <search class="nav-button"></search> -->
+                <search></search>
             </b-col>
         </b-row>
     </b-container>
@@ -86,23 +93,6 @@
 </script>
 
 <style scoped>
-    /* .btn-style {
-        height: 70px;
-        width: 70px;
-        background-color: red;
-    }
-    .bottom-filter-nav {
-        height: 30vh;
-        margin-top: 5em;
-    }
-    .btn-circle.btn-xl {
-        width: 96px;
-        height: 96px;
-        border-radius: 50px;
-        font-size: 60px;
-        background-color: #236480;
-    } */
-
     .bottom-filter-nav {
         bottom:80px;
     }
@@ -131,24 +121,8 @@
         /* box-shadow: 0 0 15px 0 #6c6c6c; */
     }
 
-    .nav-button {
-        margin-top: 37px;
-    }
-
     .form-label {
         font-size: 24px;
     }
-
-    .filter-adjust-right {
-        float: right;
-        margin-right: 20px;
-    }
-
-    .filter-adjust-left {
-        float: left;
-        margin-left: 20px;
-    }
-
-
 
 </style>
