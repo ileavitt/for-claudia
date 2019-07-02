@@ -1,0 +1,14 @@
+C:\Users\claudia.ligidakis\source\repos\GatesAPI\GatesAPI\bin\Debug\netcoreapp2.2\GatesAPI.deps.json
+C:\Users\claudia.ligidakis\source\repos\GatesAPI\GatesAPI\bin\Debug\netcoreapp2.2\GatesAPI.runtimeconfig.json
+C:\Users\claudia.ligidakis\source\repos\GatesAPI\GatesAPI\bin\Debug\netcoreapp2.2\GatesAPI.runtimeconfig.dev.json
+C:\Users\claudia.ligidakis\source\repos\GatesAPI\GatesAPI\bin\Debug\netcoreapp2.2\GatesAPI.dll
+C:\Users\claudia.ligidakis\source\repos\GatesAPI\GatesAPI\bin\Debug\netcoreapp2.2\GatesAPI.pdb
+C:\Users\claudia.ligidakis\source\repos\GatesAPI\GatesAPI\obj\Debug\netcoreapp2.2\GatesAPI.csproj.CoreCompileInputs.cache
+C:\Users\claudia.ligidakis\source\repos\GatesAPI\GatesAPI\obj\Debug\netcoreapp2.2\GatesAPI.RazorAssemblyInfo.cache
+C:\Users\claudia.ligidakis\source\repos\GatesAPI\GatesAPI\obj\Debug\netcoreapp2.2\GatesAPI.RazorAssemblyInfo.cs
+C:\Users\claudia.ligidakis\source\repos\GatesAPI\GatesAPI\obj\Debug\netcoreapp2.2\GatesAPI.AssemblyInfoInputs.cache
+C:\Users\claudia.ligidakis\source\repos\GatesAPI\GatesAPI\obj\Debug\netcoreapp2.2\GatesAPI.AssemblyInfo.cs
+C:\Users\claudia.ligidakis\source\repos\GatesAPI\GatesAPI\obj\Debug\netcoreapp2.2\GatesAPI.RazorTargetAssemblyInfo.cache
+C:\Users\claudia.ligidakis\source\repos\GatesAPI\GatesAPI\obj\Debug\netcoreapp2.2\GatesAPI.dll
+C:\Users\claudia.ligidakis\source\repos\GatesAPI\GatesAPI\obj\Debug\netcoreapp2.2\GatesAPI.pdb
+C:\Users\claudia.ligidakis\source\repos\GatesAPI\GatesAPI\obj\Debug\netcoreapp2.2\GatesAPI.csprojAssemblyReference.cache
