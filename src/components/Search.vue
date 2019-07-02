@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-button @click="$bvModal.show('search-keyboard')"><i class="material-icons md-48">search</i></b-button>
+        <b-button class="btn-blue" @click="$bvModal.show('search-keyboard')"><i class="material-icons md-48">search</i></b-button>
         <b-modal id="search-keyboard" hide-footer>
             <div class="control has-icons-left is-clearfix search">
                 <div class="search-input">
@@ -86,6 +86,14 @@ export default {
     top: 0;
     width: 2.25em;
     z-index: 4;
+}
+
+.btn-blue {
+    width: 95px;
+    height: 95px;
+    box-shadow: 0 0 15px 0 #6c6c6c;
+    background-color: #236480;
+    border-radius: 50%;
 }
 
 </style>

@@ -2,18 +2,19 @@
     <b-container class="bottom-filter-nav">
         <b-row>
             <b-col cols="1" offset="1">
-                    <b-button class="btn btn-danger btn-circle btn-xl" v-on:click="resetGrants">
-                        <i class="fas fa-angle-left"></i>
-                    </b-button>
+                    <b-button class="btn-blue" v-on:click="resetGrants"><i class="material-icons md-48">chevron_left</i></b-button>
             </b-col>
             <b-col>
-                <b-form-group label="Year:" v-if="$route.name !== 'search-grants'">
-                    <b-form-select v-model="yearSelected" v-on:change="applyYearFilter" :options="years"></b-form-select>
+                <b-form-group label-cols-sm="3" label="Year:" v-if="$route.name !== 'search-grants'">
+                    <b-form-select v-model="yearSelected" v-on:change="applyYearFilter" :options="years">
+                         <option value="" disabled selected hidden>All years</option>
+                    </b-form-select>
                 </b-form-group>
             </b-col>
             <b-col>
-                <b-form-group label="Topic:" v-if="$route.name == 'region-grants'">
+                <b-form-group label-cols-sm="3" label="Topic:" v-if="$route.name == ('region-grants')">
                     <b-form-select v-model="topicSelected" v-on:change="applyTopicFilter">
+                        <option value="" disabled selected hidden>All topics</option>
                         <option v-for="topic in topics" :value="topic" v-bind:key="topic.id">
                             {{topic.name}}
                         </option>
@@ -21,8 +22,9 @@
                 </b-form-group>
             </b-col>
             <b-col>
-                <b-form-group label="Region:" v-if="$route.name == 'topic-grants'">
+                <b-form-group label-cols-sm="3" label="Region:" v-if="$route.name == 'topic-grants'">
                     <b-form-select v-model="regionSelected" v-on:change="applyRegionFilter">
+                         <option value="" disabled selected hidden>All regions</option>
                         <option v-for="region in regions" :value="region" v-bind:key="region.id">
                             {{region.name}}
                         </option>
@@ -85,20 +87,45 @@
 </script>
 
 <style scoped>
-    .btn-style {
+    /* .btn-style {
         height: 70px;
         width: 70px;
         background-color: red;
-    }
+    } */
     .bottom-filter-nav {
         height: 30vh;
         margin-top: 5em;
     }
-    .btn-circle.btn-xl {
+    /* .btn-circle.btn-xl {
         width: 96px;
         height: 96px;
         border-radius: 50px;
         font-size: 60px;
         background-color: #236480;
+    } */
+
+    .btn-blue {
+        width: 95px;
+        height: 95px;
+        box-shadow: 0 0 15px 0 #6c6c6c;
+        background-color: #236480;
+        border-radius: 50%;
     }
+
+    select {
+        font-size: 23px;
+        width: 370px;
+        height: 80px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background: transparent;
+        border: none;
+        border-radius: 0px;
+        background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='82' viewBox='0 0 24 24' width='82' xmlns='http://www.w3.org/2000/svg'><path d='M0 0h24v24H0z' fill='rgb(35,100,128)'/><path d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z' fill='white'/></svg>");
+        background-repeat: no-repeat;
+        background-position-x: 100%;
+        background-position-y: auto;
+        box-shadow: 0 0 15px 0 #6c6c6c;
+    }
+
 </style>
