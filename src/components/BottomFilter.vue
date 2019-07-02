@@ -1,39 +1,38 @@
 <template>
     <b-container class="bottom-filter-nav">
-        <b-row>
+        <b-row class="w-100 justify-content-center">
             <b-col cols="1" offset="1">
-                    <b-button class="btn-blue" v-on:click="resetGrants"><i class="material-icons md-48">chevron_left</i></b-button>
+                    <b-button class="btn-blue nav-button" v-on:click="resetGrants"><i class="material-icons md-48">chevron_left</i></b-button>
             </b-col>
-            <b-col>
-                <b-form-group label-cols-sm="3" label="Year:" v-if="$route.name !== 'search-grants'">
-                    <b-form-select v-model="yearSelected" v-on:change="applyYearFilter" :options="years">
-                         <option value="" disabled selected hidden>All years</option>
-                    </b-form-select>
-                </b-form-group>
-            </b-col>
-            <b-col>
-                <b-form-group label-cols-sm="3" label="Topic:" v-if="$route.name == ('region-grants')">
-                    <b-form-select v-model="topicSelected" v-on:change="applyTopicFilter">
-                        <option value="" disabled selected hidden>All topics</option>
-                        <option v-for="topic in topics" :value="topic" v-bind:key="topic.id">
-                            {{topic.name}}
-                        </option>
-                    </b-form-select>
-                </b-form-group>
-            </b-col>
-            <b-col>
-                <b-form-group label-cols-sm="3" label="Region:" v-if="$route.name == 'topic-grants'">
-                    <b-form-select v-model="regionSelected" v-on:change="applyRegionFilter">
-                         <option value="" disabled selected hidden>All regions</option>
-                        <option v-for="region in regions" :value="region" v-bind:key="region.id">
-                            {{region.name}}
-                        </option>
-                    </b-form-select>
-                </b-form-group>
-            
-            </b-col>
-            <b-col cols="1" offset="1">
-                    <search></search>
+                <b-col v-if="$route.name !== 'search-grants'">
+                    <b-form-group class="form-label" v-bind:class="($route.name !== 'search-grants')? 'filter-adjust-right' : ''" label="Year" >
+                        <b-form-select v-model="yearSelected" v-on:change="applyYearFilter" :options="years">
+                            <option value="" disabled selected hidden>All years</option>
+                        </b-form-select>
+                    </b-form-group>
+                </b-col>
+                <b-col v-if="$route.name == 'region-grants'">
+                    <b-form-group class="form-label" v-bind:class="($route.name == 'region-grants')? 'filter-adjust-left' : ''"  label="Topic">
+                        <b-form-select id="topic-filter" v-model="topicSelected" v-on:change="applyTopicFilter">
+                            <option value="" disabled selected hidden>All topics</option>
+                            <option v-for="topic in topics" :value="topic" v-bind:key="topic.id">
+                                {{topic.name}}
+                            </option>
+                        </b-form-select>
+                    </b-form-group>
+                </b-col>
+                <b-col v-if="$route.name == 'topic-grants'">
+                    <b-form-group class="form-label" v-bind:class="($route.name == 'topic-grants')? 'filter-adjust-left' : ''" label="Region"  >
+                        <b-form-select v-model="regionSelected" v-on:change="applyRegionFilter">
+                            <option value="" disabled selected hidden>All regions</option>
+                            <option v-for="region in regions" :value="region" v-bind:key="region.id">
+                                {{region.name}}
+                            </option>
+                        </b-form-select>
+                    </b-form-group>
+                </b-col>
+            <b-col cols="1">
+                    <search class="nav-button"></search>
             </b-col>
         </b-row>
     </b-container>
@@ -113,7 +112,7 @@
     }
 
     select {
-        font-size: 23px;
+        font-size: 24px;
         width: 370px;
         height: 80px;
         -webkit-appearance: none;
@@ -127,5 +126,25 @@
         background-position-y: auto;
         box-shadow: 0 0 15px 0 #6c6c6c;
     }
+
+    .nav-button {
+        margin-top: 37px;
+    }
+
+    .form-label {
+        font-size: 24px;
+    }
+
+    .filter-adjust-right {
+        float: right;
+        margin-right: 20px;
+    }
+
+    .filter-adjust-left {
+        float: left;
+        margin-left: 20px;
+    }
+
+
 
 </style>
