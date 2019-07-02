@@ -28,11 +28,11 @@
             <img class="bubble" src="@/assets/view-md.gif" />
         </div>
         <div class="oceana-info" v-if="regions[4]"><div class="region-name">{{regions[4].name}}</div>{{ format(regions[4].totalGrants)}} <br /> ${{ format(regions[4].totalAmount) }}</div>
-
+        -->
         <div v-on:click="addFilter(regions[1])" class="region asia">
             <img class="bubble" src="@/assets/view-sm.gif" />
         </div>
-        <div class="asia-info" v-if="regions[1]"><div class="region-name">{{regions[1].name}}</div>{{ format(regions[1].totalGrants)}} <br /> ${{ format(regions[1].totalAmount) }}</div> -->
+        <div class="asia-info region-info" v-if="regions[1]"><div class="region-name">{{firstLetter(regions[1].name)}}</div>{{ format(regions[1].totalGrants)}} <br /> ${{ format(regions[1].totalAmount) }}</div>
     </div>
 </template>
 
@@ -48,6 +48,9 @@
                 let regionFilter = { name: region.name, id: region.id }
                 this.$store.commit('FILTER_REGION', regionFilter)
                 this.$router.push('/grants/region/' + region.name.replace(" ", "-").toLowerCase());
+            },
+            firstLetter(region) {
+                return region.charAt(0).toUpperCase() + region.slice(1).toLowerCase();
             }
         },
         computed: mapState(['regions'])
@@ -60,10 +63,6 @@
     width:50%;
 }
 
-.region {
-    position:absolute;
-}
-
 .north-am {
     left: 19%;
     top: 30%;
@@ -72,8 +71,6 @@
 .north-am-info {
     left: 6%;
     top: 42%;
-    font-weight: 600;
-    position: absolute;
 }
 
 .south-am {
@@ -84,8 +81,6 @@
 .south-am-info {
     left: 27%;
     top: 75%;
-    position: absolute;
-    font-weight: 600;
 }
 
 .europe {
@@ -96,8 +91,6 @@
 .europe-info {
     left: 42%;
     top: 46%;
-    position: absolute;
-    font-weight: 600;
 }
 
 .africa {
@@ -108,8 +101,6 @@
 .africa-info {
     top: 75%;
     left: 46%;
-    position: absolute;
-    font-weight: 600;
 }
 
 .oceana {
@@ -120,26 +111,31 @@
 .oceana-info {
     right: 23%;
     top: 80%;
-    position: absolute;
-    font-weight: 600;
 }
 
 .asia {
-    right:10%;
-    top:47%;
+    right:16%;
+    top:23%;
 }
 
 .asia-info {
-    right: 12%;
-    font-weight: 600;
-    top: 55%;
-    position: absolute;
+    right: 18%;
+    top: 36%;
+}
+
+.region {
+    position:absolute;
 }
 
 .region-name {
-    font-size: 20px;
-    font-weight: 700;
-    font-stretch: expanded;
+    font-family:'Dinot-Bold';
+    font-size: 24px;
+}
+
+.region-info {
+    font-family: 'Dinot';
+    font-size:30px;
+    position: absolute;
 }
 
 
