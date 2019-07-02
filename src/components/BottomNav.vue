@@ -1,5 +1,5 @@
 <template>
-    <b-container>
+    <b-container id="bottom-nav" class="fixed-bottom">
         <b-row align-h="center">
             <b-col cols="4">
                 <b-button-group class="shadow-bg" size="lg">
@@ -31,6 +31,10 @@ export default {
 </script>
 
 <style scoped>
+#bottom-nav {
+    bottom:80px;
+}
+
 .no-radius {
     border-radius: 0!important;
 }
