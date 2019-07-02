@@ -27,11 +27,10 @@
             },
             placeImg() {
               var imgContainer = document.getElementsByClassName('img-container')
-            //   imgContainer[0].innerHTML = '<img src="/img/sun.9240fa97.gif" class="card-img" />'
-              imgContainer[0].innerHTML = '<img src="~/src/assets/sun.gif" class="card-img" />'
-              imgContainer[1].innerHTML = '<img src="/img/arrow.04a4b532.gif" class="card-img" />'
-              imgContainer[2].innerHTML = '<img src="/img/hat.f0b0fb2c.gif" class="card-img" />'
-              imgContainer[3].innerHTML = '<img src="/img/globe.1120e292.gif" class="card-img" />'
+              imgContainer[0].innerHTML = '<img src="/img/sun.gif" class="card-img" />'
+              imgContainer[1].innerHTML = '<img src="/img/arrow.gif" class="card-img" />'
+              imgContainer[2].innerHTML = '<img src="/img/hat.gif" class="card-img" />'
+              imgContainer[3].innerHTML = '<img src="/img/globe.gif" class="card-img" />'
             },
             routing: function (data) {
                 let topicFilter = {name: data.name, id: data.id}
