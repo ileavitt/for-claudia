@@ -90,18 +90,22 @@
         height: 70px;
         width: 70px;
         background-color: red;
-    } */
+    }
     .bottom-filter-nav {
         height: 30vh;
         margin-top: 5em;
     }
-    /* .btn-circle.btn-xl {
+    .btn-circle.btn-xl {
         width: 96px;
         height: 96px;
         border-radius: 50px;
         font-size: 60px;
         background-color: #236480;
     } */
+
+    .bottom-filter-nav {
+        bottom:80px;
+    }
 
     .btn-blue {
         width: 95px;
@@ -124,7 +128,7 @@
         background-repeat: no-repeat;
         background-position-x: 100%;
         background-position-y: auto;
-        box-shadow: 0 0 15px 0 #6c6c6c;
+        /* box-shadow: 0 0 15px 0 #6c6c6c; */
     }
 
     .nav-button {

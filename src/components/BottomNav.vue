@@ -7,12 +7,12 @@
                     <router-link to="/topics" class="text-uppercase btn-style"><span class="btn-group-text">topic</span></router-link>
                 </b-button-group>
             </b-col>
-            <b-col cols="2" offset="1">
+            <b-col cols="6">
                 <b-button-group class="shadow-bg" size="md">
                     <router-link to="/grants/all-grants" class="text-uppercase btn-style"><span class="btn-group-text">view all grants</span></router-link>
                 </b-button-group>
             </b-col>
-            <b-col cols="2" offset="3">
+            <b-col cols="1" offset="1">
                 <search></search>
             </b-col>
         </b-row>
