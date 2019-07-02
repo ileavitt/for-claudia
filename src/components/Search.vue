@@ -35,9 +35,8 @@ export default {
     methods: {
         searchGrants() {
             this.$store.dispatch('searchGrants', this.searchInput)
-                .then(() => {
-                    this.$router.push('/grants/search/' + this.searchInput)
-              })
+            let keyword = (this.searchInput.replace(" ", "-").toLowerCase());
+            this.$router.push('/grants/search/' + keyword)
         }
     }
 }

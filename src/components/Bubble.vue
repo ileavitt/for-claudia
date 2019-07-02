@@ -36,9 +36,6 @@
     import { mapState } from 'vuex'
     export default {
         name: 'bubble',
-        mounted() {
-            this.$store.commit('SET_REGIONS')
-        },
         methods: {
             format(value) {
                 return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")

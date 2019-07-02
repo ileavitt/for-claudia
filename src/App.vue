@@ -1,6 +1,5 @@
 <template>
     <div id="app">
-        <grant-total></grant-total>
         <b-container class="mb-3">
             <b-row>
                 <b-col>
@@ -26,13 +25,14 @@
 </template>
 
 <script>
-    import grantTotal from '@/components/GrantTotal.vue';
 
 export default {
-  name: 'App',
-  components: {
-      grantTotal
-  }
+        name: 'App',
+        created() {
+            this.$store.dispatch('setYears')
+            this.$store.dispatch('setRegions')
+            this.$store.dispatch('setTopics')
+        }
 }
 </script>
 

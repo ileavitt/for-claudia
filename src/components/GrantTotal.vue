@@ -2,8 +2,8 @@
     <b-container class="grant-total" fluid>
         <b-row id="header-row">
           <b-col>
-            <span class="counter">{{ grantTotal }}</span> GRANTS
-                <div class='counter two'>${{grantCount}}</div> provided since 1999
+            <span class="counter">{{ Count }}</span> GRANTS
+                <div class='counter two'>${{ Amount }}</div> provided since 1999
            </b-col>
         </b-row>
     </b-container>
@@ -14,8 +14,11 @@
     import {mapState} from 'vuex'
     export default {
         name: 'grantTotal',
+        created() {
+            this.$store.dispatch('totalCount')
+        },
         computed: mapState([
-            'grantTotal', 'grantCount'
+            'Amount', 'Count'
         ])
 
     }

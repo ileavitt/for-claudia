@@ -8,7 +8,11 @@
             </b-col>
             <b-col>
                 <b-form-group label="Year:" v-if="$route.name !== 'search-grants'">
-                    <b-form-select v-model="yearSelected" v-on:change="applyYearFilter" :options="years"></b-form-select>
+                    <b-form-select v-model="yearSelected" v-on:change="applyYearFilter">
+                        <option v-for="year in years" :value="year" v-bind:key="year.id">
+                            {{year.name}}
+                        </option>
+                    </b-form-select>
                 </b-form-group>
             </b-col>
             <b-col>
@@ -53,11 +57,6 @@
                 regionSelected: this.$store.state.region
             }
         },
-        mounted() {
-            this.$store.commit('SET_YEARS')
-            this.$store.commit('SET_REGIONS')
-            this.$store.commit('SET_TOPICS')
-        },
         methods: {
             resetGrants() {
                 this.$store.dispatch('resetState')
@@ -66,15 +65,19 @@
                     })
             },
             applyYearFilter: function () {
-                this.$store.commit('FILTER_YEAR', this.yearSelected)
+                let yearSelected = { id: this.yearSelected.id, name: this.yearSelected.name }
+                this.$store.commit('FILTER_YEAR', yearSelected)
+                this.$store.dispatch('loadFiltered')
             },
             applyTopicFilter: function () {
                 let topicSelected = { id: this.topicSelected.id, name: this.topicSelected.name }
                 this.$store.commit('FILTER_TOPIC', topicSelected)
+                this.$store.dispatch('loadFiltered')
             },
             applyRegionFilter: function () {
                 let regionSelected = { id: this.regionSelected.id, name: this.regionSelected.name }
                 this.$store.commit('FILTER_REGION', regionSelected)
+                this.$store.dispatch('loadFiltered')
             }
         },
         computed: {
