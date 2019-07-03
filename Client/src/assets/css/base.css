@@ -1,0 +1,107 @@
+@font-face {
+    font-family: 'Dinot';
+    src: url("../font/DINOT-Regular.woff2") format("woff2")
+}
+
+@font-face {
+    font-family: 'Dinot-Bold';
+    src: url("../font/DINOT-Bold.woff2") format("woff2")
+}
+
+#app {
+    font-family: 'Dinot'!important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #392d1c;
+    margin-top:50px;
+}
+
+.container {
+    max-width:1920px!important;
+}
+
+.shadow-bg {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)!important;
+}
+
+.material-icons.md-48 { 
+    font-size: 48px;
+}
+
+.col-form-label {
+    font-size:24px!important;
+}
+
+.form-group {
+    margin:-40px 0 0 0!important;
+}
+
+/* modal */
+.modal {
+    padding-top: 40vh;
+}
+
+.modal-content {
+    width: 70vw !important;
+}
+
+.modal-dialog {
+    max-width: 70vw !important;
+}
+
+.modal-header {
+    border-bottom: none !important;
+}
+
+.modal-header {
+    font-size: 40px;
+}
+
+.modal-dialog button {
+    padding:1rem 2rem;
+}
+
+/* keyboard */
+.modal-dialog .vue-keyboard-key {
+    background-color:#c5dae2;
+    color:#392d1c;
+    font-family: 'Dinot-Bold';
+    font-size:24px;
+}
+
+.modal-dialog button[data-text="space"] {
+    padding:1rem 7rem;
+}
+
+.modal-dialog button[data-text="clear"] {
+    padding:1rem 5rem;
+}
+
+.modal-dialog .search-input {
+    margin-bottom:15px;
+}
+
+.modal-dialog .search-input input {
+    border:2px solid #979797;
+    border-radius:0;
+    color:#392d1c;
+    font-family: 'Dinot';
+    font-size:24px;
+    height:70px;
+    padding-left:1.25rem;
+    width:88%;
+}
+
+.modal-dialog .search-input button {
+    background-color:#236480;
+    border-radius:0;
+    font-family: 'Dinot-Bold';
+    font-size:24px;
+    margin-left:10px;
+}
+
+.modal-header .close {
+    font-size:60px;
+    line-height:1.5rem;
+}
