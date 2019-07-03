@@ -15,7 +15,7 @@
                                 </b-card-header>
                                 <b-collapse accordion="my-accordion" role="tabpanel" :id="'accordion' + data.id">
                                     <b-card-body>
-                                        <b-card-text>Given in {{formatDate(data.startDate)}} "{{ data.title }}"</b-card-text>
+                                        <b-card-text class="text-left">Given in {{formatDate(data.startDate)}} "{{ data.title }}"</b-card-text>
                                     </b-card-body>
                                 </b-collapse>
                             </b-card>
@@ -27,7 +27,7 @@
                                 </b-card-header>
                                 <b-collapse accordion="my-accordion" role="tabpanel" :id="'accordion' + data.id">
                                     <b-card-body>
-                                        <b-card-text>Given in {{formatDate(data.startDate)}} "{{ data.title }}"</b-card-text>
+                                        <b-card-text class="text-left">Given in {{formatDate(data.startDate)}} "{{ data.title }}"</b-card-text>
                                     </b-card-body>
                                 </b-collapse>
                             </b-card>
@@ -110,14 +110,17 @@
         border: none;
         box-shadow: none;
     }
+
     .btn-block {
         font-size: 24px;
         display: inherit;
         text-align: left;
         font-family: DINOT;
     }
+
     .card-body {
         margin: auto;
+        padding:0 1.25rem 1.25rem 1.25rem;
         width: 80%;
     }
 
@@ -133,21 +136,34 @@
         color:#ce6b29;
         float: left !important;
         font-family: "Font Awesome 5 Free";
-        font-size:48px;
+        font-size:62px;
         font-weight: 900;
         content: "\f056";
         padding-right: 20px;
+        filter: drop-shadow(0px 2px 2px rgba(130,130,130,1));
+        /* text-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)!important; */
     }
+
     .card-header {
         min-height: 100px;
     }
+    
     .card-header > a.collapsed:before {
         color:#ce6b29;
         float: left !important;
         font-family: "Font Awesome 5 Free";
-        font-size:65px;
+        font-size:62px;
         font-weight: 900;
         content: "\f055";
+    }
+
+    .card-header a div:first-child {
+        margin-top:5px;
+    }
+
+    .card-text {
+        font-size:24px;
+        padding-left:10px;
     }
 </style>
 

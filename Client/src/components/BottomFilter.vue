@@ -2,7 +2,9 @@
     <b-container class="bottom-filter-nav fixed-bottom">
         <b-row align-h="center">
             <b-col cols="2">
-                <b-button class="btn-blue nav-button" v-on:click="resetGrants"><i class="material-icons md-48">chevron_left</i></b-button>
+                <b-button class="btn-blue nav-button" v-on:click="resetGrants">
+                    <i class="material-icons md-48">chevron_left</i>
+                </b-button>
             </b-col>
             <b-col cols="8">
                 <b-row align-h="center">
