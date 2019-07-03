@@ -70,6 +70,14 @@
     font-size:24px;
 }
 
+.modal-dialog button[data-text="space"] {
+    padding:1rem 7rem;
+}
+
+.modal-dialog button[data-text="clear"] {
+    padding:1rem 5rem;
+}
+
 .modal-dialog .search-input {
     margin-bottom:15px;
 }
