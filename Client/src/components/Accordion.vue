@@ -1,17 +1,15 @@
 <template>
     <div role="tablist">
-        <transition name="fade">
-            <div class="loading" v-show="loading">
-                <span class="fa fa-spinner fa-spin"></span> Loading
-            </div>
-        </transition>
-        <b-container class="grantList" id="infinite-scroll">
+        <div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10">
+
+        </div>
+        <b-container class="grantList">
                 <b-row>
                     <b-col cols="2">
                         <div>year</div>
                     </b-col>
-                        <b-col class="panel-left col-5">
-                            <b-card no-body v-for="(data, index) in grantScroll" v-if="index % 2" v-bind:key="data.grants">
+                        <b-col class="panel-left col-5" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="limit">
+                            <b-card no-body v-for="(data, index) in grantList" v-if="index % 2" v-bind:key="data.grants">
                                 <b-card-header class="p-1 animated fadeInUpBig" header-tag="header" role="tab">
                                     <b-button block href="#" variant="info" v-b-toggle="'accordion' + data.id"><div><b>{{data.organization.name}}</b></div> <div>${{formatMoney(data.amount)}}</div></b-button>
                                 </b-card-header>
@@ -23,7 +21,7 @@
                             </b-card>
                         </b-col>
                         <b-col class="panel-left col-5">
-                            <b-card no-body v-for="(data, index) in grantScroll" v-if="indexmath(index)" v-bind:key="data.grants">
+                            <b-card no-body v-for="(data, index) in grantList" v-if="indexmath(index)" v-bind:key="data.grants">
                                 <b-card-header class="p-1 animated fadeInUpBig" header-tag="header" role="tab">
                                     <b-button block href="#" variant="info" v-b-toggle="'accordion' + data.id"><div><b>{{data.organization.name}}</b></div> <div>${{formatMoney(data.amount)}}</div></b-button>
                                 </b-card-header>
@@ -40,27 +38,25 @@
 </template>
 
 <script>
-    import {mapState} from 'vuex'
+    import { mapState } from 'vuex'
+    import infiniteScroll from 'vue-infinite-scroll'
+
     export default {
         name: 'accordion',
         data() {
             return {
-                nextItem: 1,
-                loading: false,
-                grantScroll: []
+                busy: false,
+                grantList: [],
+                limit: 15
             }
         },
+        directives: { infiniteScroll },
         mounted() {
             if (this.$route.name === 'region-grants' || this.$route.name === 'grants' || this.$route.name === 'topic-grants') {
                 this.$store.dispatch('loadFiltered')
             }
-            const listElm = document.querySelector('#infinite-scroll');
-            listElm.addEventListener("scroll", e => {
-                if (listElm.scrollTop + listElm.clientHeight >= listElm.scrollHeight) {
-                    this.loadMore();
-                }
-            });
-            this.grantScroll = this.$store.state.grants;
+
+            this.loadMore()
         },
         methods: {
             formatDate(value) {
@@ -75,11 +71,15 @@
                 if (val % 2) return false
                 else return true
             },
-            loadMore() {
-                this.loading = true;
-                console.log("loading")
-                this.loading = false;
-            },
+            loadMore: function () {
+                this.busy = true;
+                const append = this.grants.slice(
+                    this.grantList.length,
+                    this.grantList.length + this.limit
+                );
+                this.grantList = this.grantList.concat(append);
+                this.busy = false;
+             }
         },
         computed: {
             ...mapState(['grants'])
