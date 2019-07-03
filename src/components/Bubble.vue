@@ -4,35 +4,35 @@
             <span class="pulsing-text">VIEW</span>
         </div> -->
 
-        <!-- <div v-on:click="addFilter(regions[0])" class="region north-am">
-            <img class="bubble" src="@/assets/view-sm.gif" />
+        <div v-on:click="addFilter(regions[0])" class="region north-am">
+            <img class="bubble" src="@/assets/view-lg.gif" />
         </div>
-        <div class="north-am-info" v-if="regions[0]"><div class="region-name">{{regions[0].name}}</div>{{ format(regions[0].totalGrants)}} <br /> ${{ format(regions[0].totalAmount) }}</div>
+        <div class="north-am-info region-info" v-if="regions[0]"><div class="region-name">{{ firstLetter(regions[0].name) }}</div>{{ format(regions[0].totalGrants)}} <br /> ${{ format(regions[0].totalAmount) }}</div>
 
         <div v-on:click="addFilter(regions[5])" class="region south-am">
-            <img class="bubble" src="@/assets/view-md.gif" />
+            <img class="bubble" src="@/assets/view-sm.gif" />
         </div>
-        <div class="south-am-info" v-if="regions[5]"><div class="region-name">{{regions[5].name}}</div> {{ format(regions[5].totalGrants)}} <br /> ${{ format(regions[5].totalAmount) }}</div>
+        <div class="south-am-info region-info" v-if="regions[5]"><div class="region-name">{{ firstLetter(regions[5].name) }}</div> {{ format(regions[5].totalGrants)}} <br /> ${{ format(regions[5].totalAmount) }}</div>
 
         <div v-on:click="addFilter(regions[6])" class="region europe">
             <img class="bubble" src="@/assets/view-sm.gif" />
         </div>
-        <div class="europe-info" v-if="regions[6]"><div class="region-name">{{regions[6].name}}</div>{{ format(regions[6].totalGrants)}} <br /> ${{ format(regions[6].totalAmount) }}</div>
+        <div class="europe-info region-info" v-if="regions[6]"><div class="region-name">{{ firstLetter(regions[6].name) }}</div>{{ format(regions[6].totalGrants)}} <br /> ${{ format(regions[6].totalAmount) }}</div>
 
         <div v-on:click="addFilter(regions[2])" class="region africa">
             <img class="bubble" src="@/assets/view-lg.gif" />
         </div>
-        <div class="africa-info" v-if="regions[2]"><div class="region-name">{{regions[2].name}}</div>{{ format(regions[2].totalGrants)}} <br /> ${{ format(regions[2].totalAmount) }}</div>
+        <div class="africa-info region-info" v-if="regions[2]"><div class="region-name">{{ firstLetter(regions[2].name) }}</div>{{ format(regions[2].totalGrants)}} <br /> ${{ format(regions[2].totalAmount) }}</div>
 
         <div v-on:click="addFilter(regions[4])" class="region oceana">
-            <img class="bubble" src="@/assets/view-md.gif" />
-        </div>
-        <div class="oceana-info" v-if="regions[4]"><div class="region-name">{{regions[4].name}}</div>{{ format(regions[4].totalGrants)}} <br /> ${{ format(regions[4].totalAmount) }}</div>
-        -->
-        <div v-on:click="addFilter(regions[1])" class="region asia">
             <img class="bubble" src="@/assets/view-sm.gif" />
         </div>
-        <div class="asia-info region-info" v-if="regions[1]"><div class="region-name">{{firstLetter(regions[1].name)}}</div>{{ format(regions[1].totalGrants)}} <br /> ${{ format(regions[1].totalAmount) }}</div>
+        <div class="oceana-info region-info" v-if="regions[4]"><div class="region-name">{{ firstLetter(regions[4].name) }}</div>{{ format(regions[4].totalGrants)}} <br /> ${{ format(regions[4].totalAmount) }}</div>
+        -->
+        <div v-on:click="addFilter(regions[1])" class="region asia">
+            <img class="bubble" src="@/assets/view-md.gif" />
+        </div>
+        <div class="asia-info region-info" v-if="regions[1]"><div class="region-name">{{ firstLetter(regions[1].name) }}</div>{{ format(regions[1].totalGrants)}} <br /> ${{ format(regions[1].totalAmount) }}</div>
     </div>
 </template>
 
@@ -50,7 +50,9 @@
                 this.$router.push('/grants/region/' + region.name.replace(" ", "-").toLowerCase());
             },
             firstLetter(region) {
-                return region.charAt(0).toUpperCase() + region.slice(1).toLowerCase();
+                return region.replace(/\w\S*/g, function(txt){
+                    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+                });
             }
         },
         computed: mapState(['regions'])
@@ -59,58 +61,58 @@
 
 <style scoped>
 .bubble {
-    height:50%;
-    width:50%;
+    height:42%;
+    width:42%;
 }
 
 .north-am {
-    left: 19%;
-    top: 30%;
+    left: 14%;
+    top: 23%;
 }
 
 .north-am-info {
-    left: 6%;
-    top: 42%;
+    left: 12%;
+    top: 34%;
 }
 
 .south-am {
-    left: 27%;
-    top: 69%;
+    left: 23%;
+    top: 54%;
 }
 
 .south-am-info {
-    left: 27%;
-    top: 75%;
+    left: 22%;
+    top: 62%;
 }
 
 .europe {
-    left:46%;
-    top:41%;
+    left:36%;
+    top:23%;
 }
 
 .europe-info {
-    left: 42%;
-    top: 46%;
+    left: 38%;
+    top: 33%;
 }
 
 .africa {
-    left:50%;
-    top:66%;
+    left:37%;
+    top:46%;
 }
 
 .africa-info {
-    top: 75%;
-    left: 46%;
+    top: 64%;
+    left: 41%;
 }
 
 .oceana {
-    right:18%;
-    top:78%;
+    right:20%;
+    top:53%;
 }
 
 .oceana-info {
-    right: 23%;
-    top: 80%;
+    right: 21%;
+    top: 65%;
 }
 
 .asia {

@@ -51,28 +51,35 @@
     .card-deck {
         margin: auto auto 10vh;
     }
+
     .card-header {
+        border-radius:0;
         min-height: 22vh;
         justify-content: center;
         align-items: center;
         display: flex;
     }
+
     .card-img {
         width:20%;
         height:20%;
     }
+
     .topic-header {
         padding-top: 25px;
         min-height: 15vh;
         font-weight: 600;
         font-stretch: expanded;
     }
+
     .topic-grants {
         font-size: 30px;
     }
+
     .topic-total {
         font-size: 20px;
     }
+
     .bg-primary {
         background-color: #ce6b29 !important;
     }
