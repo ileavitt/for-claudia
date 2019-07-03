@@ -39,7 +39,7 @@
 
 /* modal */
 .modal {
-    padding-top: 45vh;
+    padding-top: 40vh;
 }
 
 .modal-content {
@@ -59,6 +59,41 @@
 }
 
 .modal-dialog button {
-    width: 80px !important;
-    height: 60px !important;
+    padding:1rem 2rem;
+}
+
+/* keyboard */
+.modal-dialog .vue-keyboard-key {
+    background-color:#c5dae2;
+    color:#392d1c;
+    font-family: 'Dinot-Bold';
+    font-size:24px;
+}
+
+.modal-dialog .search-input {
+    margin-bottom:15px;
+}
+
+.modal-dialog .search-input input {
+    border:2px solid #979797;
+    border-radius:0;
+    color:#392d1c;
+    font-family: 'Dinot';
+    font-size:24px;
+    height:70px;
+    padding-left:1.25rem;
+    width:88%;
+}
+
+.modal-dialog .search-input button {
+    background-color:#236480;
+    border-radius:0;
+    font-family: 'Dinot-Bold';
+    font-size:24px;
+    margin-left:10px;
+}
+
+.modal-header .close {
+    font-size:60px;
+    line-height:1.5rem;
 }
