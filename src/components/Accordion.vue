@@ -12,7 +12,7 @@
                     </b-col>
                         <b-col class="panel-left col-5">
                             <b-card no-body v-for="(data, index) in grantScroll" v-if="index % 2" v-bind:key="data.grants">
-                                <b-card-header class="p-1 animated fadeInUpBig" header-tag="header" role="tab">
+                                <b-card-header class="p-1 animated fadeInUp" header-tag="header" role="tab">
                                     <b-button block href="#" variant="info" v-b-toggle="'accordion' + data.id"></b-button>
                                     {{data.organization.name}} <br />${{data.amount}}
                                 </b-card-header>
@@ -25,7 +25,7 @@
                         </b-col>
                         <b-col class="panel-left col-5">
                             <b-card no-body class="mb-1" v-for="(data, index) in grantScroll" v-if="indexmath(index)" v-bind:key="data.grants">
-                                <b-card-header class="p-1 animated fadeInUpBig" header-tag="header" role="tab">
+                                <b-card-header class="p-1 animated fadeInUp" header-tag="header" role="tab">
                                     <b-button block href="#" variant="info" v-b-toggle="'accordion' + data.id"></b-button>
                                     {{data.organization.name}} <br />${{data.amount}}
                                 </b-card-header>
@@ -88,9 +88,6 @@
 
 <style scoped>
 
-@import "https://cdn.jsdelivr.net/npm/animate.css@3.7.2"; /*Animation library*/
-
-
 .grantList {
     margin-top: 3em;
     position:relative;
@@ -139,5 +136,41 @@
     font-weight: 900;
     content: "\f055";
 }
-</style>
 
+/* Animation */
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0,500px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        transform: translate3d(0,500px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: both
+}
+
+.fadeInUp {
+    opacity: 0;
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+}
+
+</style>
