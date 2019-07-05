@@ -36,6 +36,7 @@
     /* justify-content: center; */
     /* align-items: center; */
     /* padding-bottom: 80px; */
+    margin-bottom:20px;
 }
 
 .counter {

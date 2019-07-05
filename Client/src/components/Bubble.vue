@@ -28,7 +28,7 @@
             <img class="bubble" src="@/assets/view-sm.gif" />
         </div>
         <div class="oceana-info region-info" v-if="regions[4]"><div class="region-name">{{ firstLetter(regions[4].name) }}</div>{{ format(regions[4].totalGrants)}} <br /> ${{ format(regions[4].totalAmount) }}</div>
-        -->
+        
         <div v-on:click="addFilter(regions[1])" class="region asia">
             <img class="bubble" src="@/assets/view-md.gif" />
         </div>
