@@ -2,19 +2,36 @@
     <b-container class="grant-total">
         <b-row align-h="center">
             <b-col cols="3">
-                <span class="counter">{{ numberWithCommas(Count) }}</span><span class="grant-text">GRANTS</span>
+                     <ICountUp :endVal="Count" :options="options" class="counter"></ICountUp><span class="grant-text">GRANTS</span>
+                <!-- <span class="counter">{{ numberWithCommas(Count) }}</span><span class="grant-text">GRANTS</span> -->
             </b-col>
             <b-col cols="6">
-                <span class="counter">${{ numberWithCommas(Amount) }}</span><span class="grant-text">provided since 1999</span>
+                <ICountUp :endVal="Amount" :options="amountOptions" class="counter"></ICountUp><span class="grant-text">provided since 1999</span>
+                <!-- <span class="counter">${{ numberWithCommas(Amount) }}</span><span class="grant-text">provided since 1999</span> -->
             </b-col>
         </b-row>
     </b-container>
 </template>
 
 <script>
-    import {mapState} from 'vuex'
+    import {mapState} from 'vuex';
+    import ICountUp from 'vue-countup-v2';
     export default {
         name: 'grantTotal',
+        components: {
+            ICountUp
+        },
+        data() {
+            return {
+                options: {
+                    separator: ','
+                },
+                amountOptions: {
+                    separator: ',',
+                    prefix: '$'
+                }
+            }
+        },
         created() {
             this.$store.dispatch('totalCount')
         },
@@ -40,10 +57,7 @@
 }
 
 .counter {
-    /* display: inline-block; */
     font-size:60px;
-    -webkit-animation: flip .2s 2 linear;
-    animation: flipX .2s 2 linear;
 }
 
 .grant-text {

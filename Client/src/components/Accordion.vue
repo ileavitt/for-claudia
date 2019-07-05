@@ -165,5 +165,35 @@
         font-size:24px;
         padding-left:10px;
     }
+
+    ::-webkit-scrollbar,
+    ::-webkit-scrollbar-thumb,
+    ::-webkit-scrollbar-track { 
+        width: 40px;
+        border: none;
+        background: transparent;
+    }
+
+    ::-webkit-scrollbar-button,
+    ::-webkit-scrollbar-track-piece,
+    ::-webkit-scrollbar-corner,
+    ::-webkit-resizer {
+        display: none;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 20px;
+        background-color:#6b6b6b;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-image: url('~@/assets/scrollbar-track.png');
+        background-position: center;
+        background-repeat: repeat-y;
+        opacity: 0.1;
+    }
+
+
+
 </style>
 
