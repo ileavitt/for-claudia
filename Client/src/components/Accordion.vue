@@ -9,8 +9,8 @@
                         <div>year</div>
                     </b-col>
                         <b-col class="panel-left col-5" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="limit">
-                            <b-card no-body v-for="(data, index) in grantList" v-if="index % 2" v-bind:key="data.grants">
-                                <b-card-header class="p-1 animated fadeInUpBig" header-tag="header" role="tab">
+                            <b-card no-body v-for="(data, index) in grantList" class="animated fadeInUp" v-if="index % 2" v-bind:key="data.grants">
+                                <b-card-header class="p-1" header-tag="header" role="tab">
                                     <b-button block href="#" variant="info" v-b-toggle="'accordion' + data.id"><div><b>{{data.organization.name}}</b></div> <div>${{formatMoney(data.amount)}}</div></b-button>
                                 </b-card-header>
                                 <b-collapse accordion="my-accordion" role="tabpanel" :id="'accordion' + data.id">
@@ -21,8 +21,8 @@
                             </b-card>
                         </b-col>
                         <b-col class="panel-left col-5">
-                            <b-card no-body v-for="(data, index) in grantList" v-if="indexmath(index)" v-bind:key="data.grants">
-                                <b-card-header class="p-1 animated fadeInUpBig" header-tag="header" role="tab">
+                            <b-card no-body v-for="(data, index) in grantList" class="animated fadeInUp" v-if="indexmath(index)" v-bind:key="data.grants">
+                                <b-card-header class="p-1" header-tag="header" role="tab">
                                     <b-button block href="#" variant="info" v-b-toggle="'accordion' + data.id"><div><b>{{data.organization.name}}</b></div> <div>${{formatMoney(data.amount)}}</div></b-button>
                                 </b-card-header>
                                 <b-collapse accordion="my-accordion" role="tabpanel" :id="'accordion' + data.id">
@@ -88,9 +88,6 @@
 </script>
 
 <style scoped>
-
-@import "https://cdn.jsdelivr.net/npm/animate.css@3.7.2"; /*Animation library*/
-
 
     .grantList {
         position:relative;
@@ -166,6 +163,38 @@
         padding-left:10px;
     }
 
+    /* Animation */
+    @keyframes fadeInUp {
+        from {
+            transform: translate3d(0,500px,0)
+        }
+        to {
+            transform: translate3d(0,0,0);
+            opacity: 1
+        }
+    }
+    @-webkit-keyframes fadeInUp {
+        from {
+            transform: translate3d(0,500px,0)
+        }
+        to {
+            transform: translate3d(0,0,0);
+            opacity: 1
+        }
+    }
+    .animated {
+        animation-duration: 1s;
+        animation-fill-mode: both;
+        -webkit-animation-duration: 1s;
+        -webkit-animation-fill-mode: both
+    }
+    .fadeInUp {
+        opacity: 0;
+        animation-name: fadeInUp;
+        -webkit-animation-name: fadeInUp;
+    }
+
+    /* Scrollbar */
     ::-webkit-scrollbar,
     ::-webkit-scrollbar-thumb,
     ::-webkit-scrollbar-track { 
