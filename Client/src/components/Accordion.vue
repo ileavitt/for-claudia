@@ -51,7 +51,7 @@
                 busy: false,
                 grantList: [],
                 limit: 15,
-                hashtags: []
+                hashtags: ''
             }
         },
         directives: { infiniteScroll },
@@ -85,29 +85,33 @@
                 this.busy = false;
              },
             getHashtags(grantId) {
+                //clear hashtags
+                this.hashtags = '';
+
                 //filter based on grantId passed
                 let grant = db.grant.filter(function(grant) {
                     return grant.id == grantId;
                 })
                 
-                //clear hashtags
-                this.hashtags = [];
-                
-                //add date
-                let formattedDate = this.formatDate(grant.startDate);
-                this.hashtags += '#' + formattedDate.substr(-4);
+                //only add hashtags if grant is found
+                if(grant.length)
+                {
+                    //add date
+                    let formattedDate = this.formatDate(grant.startDate);
+                    this.hashtags += '#' + formattedDate.substr(-4);
 
-                //add regions
-                let regions = grant[0].region[0].grantRegion;
-                for(var region in regions){
-                    this.hashtags += ' #' + regions[region];
+                    //add regions
+                    let regions = grant[0].region[0].grantRegion;
+                    for(var region in regions){
+                        this.hashtags += ' #' + regions[region];
+                    }
+
+                    //add topics
+                    let topics = grant[0].topicGroup[0].topic;
+                    for(var topic in topics) {
+                        this.hashtags += ' #' + topics[topic];
+                    } 
                 }
-
-                //add topics
-                let topics = grant[0].topicGroup[0].topic;
-                for(var topic in topics) {
-                    this.hashtags += ' #' + topics[topic];
-                }          
             }   
         },
         computed: {
