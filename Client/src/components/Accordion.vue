@@ -11,11 +11,12 @@
                         <b-col class="panel-left col-5" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="limit">
                             <b-card no-body v-for="(data, index) in grantList" class="animated fadeInUp" v-if="index % 2" v-bind:key="data.grants">
                                 <b-card-header class="p-1" header-tag="header" role="tab">
-                                    <b-button block href="#" variant="info" v-b-toggle="'accordion' + data.id"><div><b>{{data.organization.name}}</b></div> <div>${{formatMoney(data.amount)}}</div></b-button>
+                                    <b-button block href="#" variant="info" v-b-toggle="'accordion' + data.id" v-on:click="getHashtags('56011')"><div><b>{{data.organization.name}}</b></div> <div>${{formatMoney(data.amount)}}</div></b-button>
                                 </b-card-header>
                                 <b-collapse accordion="my-accordion" role="tabpanel" :id="'accordion' + data.id">
                                     <b-card-body>
                                         <b-card-text class="text-left">Given in {{formatDate(data.startDate)}} "{{ data.title }}"</b-card-text>
+                                        <b-card-text class="text-left hashtag">{{ hashtags }}</b-card-text>
                                     </b-card-body>
                                 </b-collapse>
                             </b-card>
@@ -23,11 +24,12 @@
                         <b-col class="panel-left col-5">
                             <b-card no-body v-for="(data, index) in grantList" class="animated fadeInUp" v-if="indexmath(index)" v-bind:key="data.grants">
                                 <b-card-header class="p-1" header-tag="header" role="tab">
-                                    <b-button block href="#" variant="info" v-b-toggle="'accordion' + data.id"><div><b>{{data.organization.name}}</b></div> <div>${{formatMoney(data.amount)}}</div></b-button>
+                                    <b-button block href="#" variant="info" v-b-toggle="'accordion' + data.id" v-on:click="getHashtags('56011')"><div><b>{{data.organization.name}}</b></div> <div>${{formatMoney(data.amount)}}</div></b-button>
                                 </b-card-header>
                                 <b-collapse accordion="my-accordion" role="tabpanel" :id="'accordion' + data.id">
                                     <b-card-body>
                                         <b-card-text class="text-left">Given in {{formatDate(data.startDate)}} "{{ data.title }}"</b-card-text>
+                                        <b-card-text class="text-left hashtag">{{ hashtags }}</b-card-text>
                                     </b-card-body>
                                 </b-collapse>
                             </b-card>
@@ -40,6 +42,7 @@
 <script>
     import { mapState } from 'vuex'
     import infiniteScroll from 'vue-infinite-scroll'
+    import db from '../../../db.json'
 
     export default {
         name: 'accordion',
@@ -47,7 +50,8 @@
             return {
                 busy: false,
                 grantList: [],
-                limit: 15
+                limit: 15,
+                hashtags: ''
             }
         },
         directives: { infiniteScroll },
@@ -79,12 +83,41 @@
                 );
                 this.grantList = this.grantList.concat(append);
                 this.busy = false;
-             }
+             },
+            getHashtags(grantId) {
+                //clear hashtags
+                this.hashtags = '';
+
+                //filter based on grantId passed
+                let grant = db.grant.filter(function(grant) {
+                    return grant.id == grantId;
+                })
+                
+                //only add hashtags if grant is found
+                if(grant.length)
+                {
+                    //add date
+                    let formattedDate = this.formatDate(grant.startDate);
+                    this.hashtags += '#' + formattedDate.substr(-4);
+
+                    //add regions
+                    let regions = grant[0].region[0].grantRegion;
+                    for(var region in regions){
+                        this.hashtags += ' #' + regions[region];
+                    }
+
+                    //add topics
+                    let topics = grant[0].topicGroup[0].topic;
+                    for(var topic in topics) {
+                        this.hashtags += ' #' + topics[topic];
+                    } 
+                }
+            }   
         },
         computed: {
             ...mapState(['grants'])
         }
-}
+    }
 </script>
 
 <style scoped>
@@ -161,6 +194,11 @@
     .card-text {
         font-size:24px;
         padding-left:10px;
+    }
+
+    .hashtag {
+        font-weight: bold;
+        color: #ce6b29;
     }
 
     /* Animation */
