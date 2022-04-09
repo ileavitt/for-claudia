@@ -16,7 +16,7 @@
     "core-js": "^2.6.5",
     "countup.js": "^2.0.4",
     "lottie-web": "^5.5.5",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "portal-vue": "^2.1.5",
     "vue": "^2.6.10",
     "vue-axios": "^2.1.4",
